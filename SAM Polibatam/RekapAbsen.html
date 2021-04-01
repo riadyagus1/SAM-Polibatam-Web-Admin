@@ -17,6 +17,16 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="../assets/plugins/DataTables/Bootstrap-4-4.1.1/css/dataTables.bootstrap4.min.css">
+    <script src="../assets/plugins/DataTables-1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/plugins/DataTables/Bootstrap-4-4.1.1/js/dataTables.responsive.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -97,7 +107,6 @@
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
                             </a>
-                            <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
                 </div>
@@ -118,7 +127,8 @@
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="index.html" aria-expanded="false"><i class="me-3 fas fa-home "
-                                    aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="DataKaryawan.html" aria-expanded="false">
                                 <i class="me-3 fas fa-users" aria-hidden="true"></i><span
@@ -130,16 +140,24 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ApprovalIzin.html" aria-expanded="false"><i class="me-3 fas fa-envelope"
-                                    aria-hidden="true"></i><span class="hide-menu">Approval Izin</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Approval Izin</span></a>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="LokasiWFH.html" aria-expanded="false"><i class="me-3 fas fa-map"
-                                    aria-hidden="true"></i><span class="hide-menu">Lokasi WFH</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Lokasi WFH</span></a>
+                                </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ApprovalLokasi.html" aria-expanded="false"><i class="me-3 fas fa-check-square"
-                                    aria-hidden="true"></i><span class="hide-menu">Approval Lokasi WFH</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Approval Lokasi WFH</span></a>
+                                </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="PerubahanHariKerja.html" aria-expanded="false"><i class="me-3 fas fa-calendar-alt"
+                                    aria-hidden="true"></i><span class="hide-menu">Perubahan Hari Kerja</span></a>
+                                </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="Informasi.html" aria-expanded="false"><i class="me-3 fas fa-info-circle"
-                                    aria-hidden="true"></i><span class="hide-menu">Informasi</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Informasi</span></a>
+                                </li>
                         <li class="text-center p-20 upgrade-btn">
                             <a href="#"
                                 class="btn btn-danger text-white mt-4" target="_blank">Log Out</a>
@@ -177,7 +195,7 @@
                     <div class="col-md-6 col-4 align-self-center">
                         <div class="text-end upgrade-btn">
                             <a href="#"
-                                class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Filter</a>
+                                class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-print"></i> Export PDF</a>
                         </div>
                     </div>
                 </div>
@@ -199,48 +217,65 @@
                             <div class="card-body">
                                 <h4 class="card-title">Tabel Kehadiran</h4>
                                 <h6 class="card-subtitle">Tanggal: <code>1 Maret 2021 - 30 Maret 2021</code></h6>
+                                <br>
                                 <div class="table-responsive">
-                                    <table class="table user-table no-wrap">
+                                    <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>
-                                                <th class="border-top-0">No</th>
                                                 <th class="border-top-0">Tanggal</th>
                                                 <th class="border-top-0">Nama</th>
                                                 <th class="border-top-0">Jam Masuk</th>
                                                 <th class="border-top-0">Jam Keluar</th>
+                                                <th class="border-top-0">Lama Waktu Bekerja</th>
                                                 <th class="border-top-0">Lokasi</th>
                                                 <th class="border-top-0">Foto Masuk</th>
                                                 <th class="border-top-0">Foto Pulang</th>
+                                                <th class="border-top-0">Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
                                                 <td>29 Maret 2021</td>
                                                 <td>Agus Riady</td>
                                                 <td>08:00</td>
                                                 <td>17:00</td>
+                                                <td>8 Jam</td>
                                                 <td>Polibatam</td>
                                                 <td><a href="#">FotoMasuk.jpg</a></td>
                                                 <td><a href="#">FotoKeluar.jpg</a></td>
+                                                <td>Hadir</td>
                                             </tr>
                                             <tr>
-                                                <td>2</td>
                                                 <td>30 Maret 2021</td>
                                                 <td>Agus Riady</td>
-                                                <td>09:00</td>
+                                                <td>08:30</td>
                                                 <td>17:00</td>
+                                                <td>7 Jam 30 Menit</td>
                                                 <td>WFH</td>
                                                 <td><a href="#">FotoMasuk.jpg</a></td>
                                                 <td><a href="#">FotoKeluar.jpg</a></td>
+                                                <td>Hadir</td>
                                             </tr>
-                                        </tbody>
+                                            <tr>
+                                                <td>30 Maret 2021</td>
+                                                <td>Kevin Timoteus Sirait</td>
+                                                <td>08:30</td>
+                                                <td>17:00</td>
+                                                <td>7 Jam 30 Menit</td>
+                                                <td>WFH</td>
+                                                <td><a href="#">FotoMasuk.jpg</a></td>
+                                                <td><a href="#">FotoKeluar.jpg</a></td>
+                                                <td>Hadir</td>
+                                            </tr>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <script>
+                    $('#zero_config').DataTable();
+                </script>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

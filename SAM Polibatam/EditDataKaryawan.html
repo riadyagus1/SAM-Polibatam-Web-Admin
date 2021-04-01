@@ -89,7 +89,7 @@
 
                         <li class="nav-item hidden-sm-down">
                             <form class="app-search ps-3">
-                                <input type="text" class="form-control" placeholder="Cari data karyawam..."> <a
+                                <input type="text" class="form-control" placeholder="Cari data karyawan..."> <a
                                     class="srh-btn"><i class="ti-search"></i></a>
                             </form>
                         </li>
@@ -127,7 +127,8 @@
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="index.html" aria-expanded="false"><i class="me-3 fas fa-home "
-                                    aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="DataKaryawan.html" aria-expanded="false">
                                 <i class="me-3 fas fa-users" aria-hidden="true"></i><span
@@ -139,16 +140,24 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ApprovalIzin.html" aria-expanded="false"><i class="me-3 fas fa-envelope"
-                                    aria-hidden="true"></i><span class="hide-menu">Approval Izin</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Approval Izin</span></a>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="LokasiWFH.html" aria-expanded="false"><i class="me-3 fas fa-map"
-                                    aria-hidden="true"></i><span class="hide-menu">Lokasi WFH</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Lokasi WFH</span></a>
+                                </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ApprovalLokasi.html" aria-expanded="false"><i class="me-3 fas fa-check-square"
-                                    aria-hidden="true"></i><span class="hide-menu">Approval Lokasi WFH</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Approval Lokasi WFH</span></a>
+                                </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="PerubahanHariKerja.html" aria-expanded="false"><i class="me-3 fas fa-calendar-alt"
+                                    aria-hidden="true"></i><span class="hide-menu">Perubahan Hari Kerja</span></a>
+                                </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="Informasi.html" aria-expanded="false"><i class="me-3 fas fa-info-circle"
-                                    aria-hidden="true"></i><span class="hide-menu">Informasi</span></a></li>
+                                    aria-hidden="true"></i><span class="hide-menu">Informasi</span></a>
+                                </li>
                         <li class="text-center p-20 upgrade-btn">
                             <a href="#"
                                 class="btn btn-danger text-white mt-4" target="_blank">Log Out</a>
@@ -205,7 +214,14 @@
                                 <center class="mt-4"> <img src="../assets/images/users/9.png"
                                         class="rounded-circle" width="150" />
                                     <h4 class="card-title mt-2">Agus Riady</h4>
-                                    <h6 class="card-subtitle">Mahasiswa</h6>
+                                    <h6 class="card-subtitle">3311901002</h6>
+                                    <h6 class="card-subtitle">Mahasiswa</h6><br>
+                                    <div class="col-md-6 col-4 align-self-center">
+				                        <div class="text-end upgrade-btn">
+				                            <a href="RekapAbsenAgusRiady.html"
+				                                class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Lihat Rekap Absen</a>
+				                        </div>
+				                    </div>
                                 </center>
                             </div>
                         </div>
@@ -234,6 +250,41 @@
                                         <label class="col-md-12 mb-0">Jabatan</label>
                                         <div class="col-md-12">
                                             <input type="text" placeholder="Mahasiswa"
+                                                class="form-control ps-0 form-control-line" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Username</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="agus.3311901002"
+                                                class="form-control ps-0 form-control-line" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="riadyagus1@gmail.com"
+                                                class="form-control ps-0 form-control-line" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Jam Kerja</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="08:00 - 17:00"
+                                                class="form-control ps-0 form-control-line" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Jam Istirahat</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="12:00 - 13:00"
+                                                class="form-control ps-0 form-control-line" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Lokasi Kantor</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Politeknik Negeri Batam"
                                                 class="form-control ps-0 form-control-line" disabled>
                                         </div>
                                     </div>
