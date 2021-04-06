@@ -54,10 +54,10 @@ $(function () {
         };
         var plotObj = $.plot($("#flot-line-chart"), [{
             data: sin,
-            label: "sin(x)",
+            label: "Jumlah Karyawan Yang Sudah Login",
         }, {
             data: cos,
-            label: "cos(x)"
+            label: "Total Presensi Hari Ini"
         }], options);
     }
 });
