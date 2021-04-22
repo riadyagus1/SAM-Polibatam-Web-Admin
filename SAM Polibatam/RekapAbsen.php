@@ -11,12 +11,22 @@
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>SAM Polibatam | Edit Data Karyawan</title>
+    <title>SAM Polibatam | Rekap Absen</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="../assets/plugins/DataTables/Bootstrap-4-4.1.1/css/dataTables.bootstrap4.min.css">
+    <script src="../assets/plugins/DataTables-1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/plugins/DataTables/Bootstrap-4-4.1.1/js/dataTables.responsive.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -84,15 +94,6 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav me-auto mt-md-0 ">
                         <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-
-                        <li class="nav-item hidden-sm-down">
-                            <form class="app-search ps-3">
-                                <input type="text" class="form-control" placeholder="Cari data karyawan..."> <a
-                                    class="srh-btn"><i class="ti-search"></i></a>
-                            </form>
-                        </li>
                     </ul>
 
                     <!-- ============================================================== -->
@@ -106,7 +107,6 @@
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
                             </a>
-                            <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
                 </div>
@@ -186,15 +186,20 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Data Karyawan</h3>
+                        <h3 class="page-title mb-0 p-0">Rekap Absen</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a href="DataKaryawan.php">Data Karyawan</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Edit</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Rekap Absen</li>
                                 </ol>
                             </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-4 align-self-center">
+                        <div class="text-end upgrade-btn">
+                            <a href="#"
+                                class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-print"></i> Export PDF</a>
                         </div>
                     </div>
                 </div>
@@ -209,114 +214,82 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <!-- Row -->
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3 col-md-5">
-                        <div class="card">
-                            <div class="card-body profile-card">
-                                <center class="mt-4"> <img src="../assets/images/users/9.png"
-                                        class="rounded-circle" width="150" />
-                                    <h4 class="card-title mt-2">Agus Riady</h4>
-                                    <h6 class="card-subtitle">3311901002</h6>
-                                    <h6 class="card-subtitle">Mahasiswa</h6><br>
-                                    <div class="col-md-6 col-4 align-self-center">
-				                        <div class="text-end upgrade-btn">
-				                            <a href="#"
-				                                class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Lihat Rekap Absen</a>
-				                        </div>
-				                    </div>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <!-- column -->
+                    <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material mx-2">
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">NIM</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="3311901002"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Nama Lengkap</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="Agus Riady"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Jabatan</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="Mahasiswa"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Username</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="agus.3311901002"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Email</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="riadyagus1@gmail.com"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Jam Kerja</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="08:00 - 17:00"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Jam Istirahat</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="12:00 - 13:00"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Lokasi Kantor</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="Politeknik Negeri Batam"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Lokasi WFH</label>
-                                        <div class="col-sm-12 border-bottom">
-                                            <select class="form-select shadow-none border-0 ps-0 form-control-line">
-                                                <option>Bengkong</option>
-                                                <option>Batam Centre</option>
-                                                <option>Batu Aji</option>
-                                                <option>Batu Ampar</option>
-                                                <option>Nongsa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12 d-flex">
-                                            <button class="btn btn-success mx-auto mx-md-0 text-white">Update
-                                                Profile</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <h4 class="card-title">Tabel Kehadiran</h4>
+                                <h6 class="card-subtitle">Tanggal: <code>1 Maret 2021 - 30 Maret 2021</code></h6>
+                                <br>
+                                <div class="table-responsive">
+                                    <table id="zero_config" class="table table-striped table-bordered no-wrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0">Tanggal</th>
+                                                <th class="border-top-0">Nama</th>
+                                                <th class="border-top-0">Jam Masuk</th>
+                                                <th class="border-top-0">Jam Keluar</th>
+                                                <th class="border-top-0">Lama Waktu Bekerja</th>
+                                                <th class="border-top-0">Lokasi</th>
+                                                <th class="border-top-0">Foto Masuk</th>
+                                                <th class="border-top-0">Foto Pulang</th>
+                                                <th class="border-top-0">Status</th>
+                                                <th class="border-top-0">To Do List</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>29 Maret 2021</td>
+                                                <td>Agus Riady</td>
+                                                <td>08:00</td>
+                                                <td>17:00</td>
+                                                <td>8 Jam</td>
+                                                <td>Polibatam</td>
+                                                <td><a href="#">FotoMasuk.jpg</a></td>
+                                                <td><a href="#">FotoKeluar.jpg</a></td>
+                                                <td>Hadir</td>
+                                                <td>
+                                                    <a href="#"
+                                                            class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-list"></i> List </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>30 Maret 2021</td>
+                                                <td>Agus Riady</td>
+                                                <td>08:30</td>
+                                                <td>17:00</td>
+                                                <td>7 Jam 30 Menit</td>
+                                                <td>WFH</td>
+                                                <td><a href="#">FotoMasuk.jpg</a></td>
+                                                <td><a href="#">FotoKeluar.jpg</a></td>
+                                                <td>Hadir</td>
+                                                <td>
+                                                    <a href="#"
+                                                            class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-list"></i> List </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>30 Maret 2021</td>
+                                                <td>Kevin Timoteus Sirait</td>
+                                                <td>08:30</td>
+                                                <td>17:00</td>
+                                                <td>7 Jam 30 Menit</td>
+                                                <td>WFH</td>
+                                                <td><a href="#">FotoMasuk.jpg</a></td>
+                                                <td><a href="#">FotoKeluar.jpg</a></td>
+                                                <td>Hadir</td>
+                                                <td>
+                                                    <a href="#"
+                                                            class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-list"></i> List </a></td>
+                                            </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
                 </div>
-                <!-- Row -->
+                <script>
+                    $('#zero_config').DataTable();
+                </script>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

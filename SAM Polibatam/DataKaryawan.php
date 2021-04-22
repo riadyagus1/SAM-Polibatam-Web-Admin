@@ -59,7 +59,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="Home.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -128,7 +128,7 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="index.html" aria-expanded="false"><i class="me-3 fas fa-home "
+                                href="Home.php" aria-expanded="false"><i class="me-3 fas fa-home "
                                     aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -137,36 +137,36 @@
                                     class="hide-menu">Data Karyawan</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="RekapAbsen.html" aria-expanded="false"><i class="me-3  fas fa-clipboard-check"
+                                href="RekapAbsen.php" aria-expanded="false"><i class="me-3  fas fa-clipboard-check"
                                     aria-hidden="true"></i><span class="hide-menu">Rekap Absen</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="ApprovalIzin.html" aria-expanded="false"><i class="me-3 fas fa-envelope"
+                                href="ApprovalIzin.php" aria-expanded="false"><i class="me-3 fas fa-envelope"
                                     aria-hidden="true"></i><span class="hide-menu">Approval Izin</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="LokasiWFH.html" aria-expanded="false"><i class="me-3 fas fa-map"
+                                href="LokasiWFH.php" aria-expanded="false"><i class="me-3 fas fa-map"
                                     aria-hidden="true"></i><span class="hide-menu">Lokasi WFH</span></a>
                                 </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="ApprovalLokasi.html" aria-expanded="false"><i class="me-3 fas fa-check-square"
+                                href="ApprovalLokasi.php" aria-expanded="false"><i class="me-3 fas fa-check-square"
                                     aria-hidden="true"></i><span class="hide-menu">Approval Lokasi WFH</span></a>
                                 </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="PerubahanHariKerja.html" aria-expanded="false"><i class="me-3 fas fa-calendar-alt"
+                                href="PerubahanHariKerja.php" aria-expanded="false"><i class="me-3 fas fa-calendar-alt"
                                     aria-hidden="true"></i><span class="hide-menu">Perubahan Hari Kerja</span></a>
                                 </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="ManajemenTokenAPI.html" aria-expanded="false"><i class="me-3 fas fa-fire"
+                                href="ManajemenTokenAPI.php" aria-expanded="false"><i class="me-3 fas fa-fire"
                                     aria-hidden="true"></i><span class="hide-menu">Manajemen Token API</span></a>
                                 </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="Informasi.html" aria-expanded="false"><i class="me-3 fas fa-info-circle"
+                                href="Informasi.php" aria-expanded="false"><i class="me-3 fas fa-info-circle"
                                     aria-hidden="true"></i><span class="hide-menu">Informasi</span></a>
                                 </li>
                         <li class="text-center p-20 upgrade-btn">
-                            <a href="#"
-                                class="btn btn-danger text-white mt-4" target="_blank">Log Out</a>
+                            <a href="Logout.php"
+                                class="btn btn-danger text-white mt-4">Log Out</a>
                         </li>
                     </ul>
 
@@ -192,7 +192,7 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Data Karyawan</li>
                                 </ol>
                             </nav>

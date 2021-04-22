@@ -11,7 +11,7 @@
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>SAM Polibatam | Edit Data Karyawan</title>
+    <title>SAM Polibatam | Approval Izin</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
@@ -84,15 +84,6 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav me-auto mt-md-0 ">
                         <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-
-                        <li class="nav-item hidden-sm-down">
-                            <form class="app-search ps-3">
-                                <input type="text" class="form-control" placeholder="Cari data karyawan..."> <a
-                                    class="srh-btn"><i class="ti-search"></i></a>
-                            </form>
-                        </li>
                     </ul>
 
                     <!-- ============================================================== -->
@@ -186,13 +177,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Data Karyawan</h3>
+                        <h3 class="page-title mb-0 p-0">Approval Izin</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a href="DataKaryawan.php">Data Karyawan</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Edit</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Approval Izin</li>
                                 </ol>
                             </nav>
                         </div>
@@ -209,114 +199,46 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <!-- Row -->
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3 col-md-5">
-                        <div class="card">
-                            <div class="card-body profile-card">
-                                <center class="mt-4"> <img src="../assets/images/users/9.png"
-                                        class="rounded-circle" width="150" />
-                                    <h4 class="card-title mt-2">Agus Riady</h4>
-                                    <h6 class="card-subtitle">3311901002</h6>
-                                    <h6 class="card-subtitle">Mahasiswa</h6><br>
-                                    <div class="col-md-6 col-4 align-self-center">
-				                        <div class="text-end upgrade-btn">
-				                            <a href="#"
-				                                class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Lihat Rekap Absen</a>
-				                        </div>
-				                    </div>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <!-- column -->
+                    <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material mx-2">
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">NIM</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="3311901002"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Nama Lengkap</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="Agus Riady"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Jabatan</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="Mahasiswa"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Username</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="agus.3311901002"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Email</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="riadyagus1@gmail.com"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Jam Kerja</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="08:00 - 17:00"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Jam Istirahat</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="12:00 - 13:00"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Lokasi Kantor</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="Politeknik Negeri Batam"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-12">Lokasi WFH</label>
-                                        <div class="col-sm-12 border-bottom">
-                                            <select class="form-select shadow-none border-0 ps-0 form-control-line">
-                                                <option>Bengkong</option>
-                                                <option>Batam Centre</option>
-                                                <option>Batu Aji</option>
-                                                <option>Batu Ampar</option>
-                                                <option>Nongsa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12 d-flex">
-                                            <button class="btn btn-success mx-auto mx-md-0 text-white">Update
-                                                Profile</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                <h4 class="card-title">Tabel Pengajuan Izin</h4>
+                                <h6 class="card-subtitle">Data yang ditampilakan adalah data izin yang diajukan melalui <code>Aplikasi SAM Polibatam</code></h6>
+                                <div class="table-responsive">
+                                    <table class="table user-table no-wrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0">ID Header</th>
+                                                <th class="border-top-0">Nama</th>
+                                                <th class="border-top-0">Tanggal</th>
+                                                <th class="border-top-0">Alasan</th>
+                                                <th class="border-top-0">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>3311901002</td>
+                                                <td>Agus Riady</td>
+                                                <td>31 Maret 2021</td>
+                                                <td>Acara Keluarga</td>
+                                                <td>
+                                                    <div class="col-md-6 col-4 align-self-center">
+                                                    <div class="text-end upgrade-btn">
+                                                        <a href="#"
+                                                            class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-check"></i> Terima</a>
+                                                        <a href="#"
+                                                            class="btn btn-danger d-none d-md-inline-block text-white"><i class="fas fa-times"></i> Tolak </a>
+                                                </div></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
                 </div>
-                <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
