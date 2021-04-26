@@ -11,7 +11,7 @@
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>SAM Polibatam | Manajemen Token API</title>
+    <title>SAM Polibatam | Tambah Token API</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
@@ -182,15 +182,10 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Manajemen Token API</li>
+                                    <li class="breadcrumb-item"><a href="ManajemenTokenAPI.php">Manajemen Token API</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Tambah Token API</li>
                                 </ol>
                             </nav>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-4 align-self-center">
-                        <div class="text-end upgrade-btn">
-                            <a href="ManajemenTokenAPI-Add.php"
-                                class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-plus"></i> Tambah Token</a>
                         </div>
                     </div>
                 </div>
@@ -210,47 +205,34 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Tabel Manajemen Token API</h4>
-                                <h6 class="card-subtitle">Data <code>Token API</code></h6>
-                                <div class="table-responsive">
-                                    <table class="table user-table no-wrap">
-                                        <thead>
-                                            <tr>
-                                                <th class="border-top-0">Token</th>
-                                                <th class="border-top-0">Keterangan</th>
-                                                <th class="border-top-0">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            include 'koneksi.php';
-                                            $tbl_api_token = mysqli_query($koneksi, "SELECT * from tbl_api_token");
-                                            foreach ($tbl_api_token as $row) {
-                                            echo "<tr>
-                                                    <td>" . $row['api_token'] . "</td>
-                                                    <td>" . $row['keterangan'] . "</td>
-                                                    <td>
-                                                    <div class='col-md-6 col-4 align-self-center'>
-                                                    <div class='text-end upgrade-btn'>
-                                                        <a href='ManajemenTokenAPI-Edit.php?api_token=$row[api_token]'
-                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-edit'></i> Edit</a>
-                                                        <a href='APIdelete.php?api_token=$row[api_token]'
-                                                            class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Hapus </a>
-                                                </div></td>
-                                                </tr>";
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <h4 class="card-title">Edit Token API</h4>
+                                <form class="form-horizontal form-material mx-2" method="post" action="APItambah.php">
+                                    <input type="hidden" value="<?php echo $row['api_token'];?>" name="api_token">
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Token API</label>
+                                        <div class="col-md-12">
+                                            <input type="text" name="api_token"
+                                                class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Keterangan</label>
+                                        <div class="col-md-12">
+                                            <input type="text" name="keterangan"
+                                                class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" value="simpan"
+                                            class='btn btn-success d-none d-md-inline-block text-white'>Simpan Perubahan</button>
+                                        <a href='ManajemenTokenAPI.php'
+                                            class='btn btn-danger d-none d-md-inline-block text-white'>Kembali</a>         
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <script>
-                    $('#zero_config').DataTable();
-                </script>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
