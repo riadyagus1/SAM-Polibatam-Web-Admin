@@ -200,7 +200,7 @@
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
                         <div class="text-end upgrade-btn">
-                            <a href="#"
+                            <a href="exportPDFDataKaryawan.php"
                                 class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-print"></i> Export PDF</a>
                         </div>
                     </div>
@@ -248,9 +248,10 @@
                                                     <td>
                                                         <div class='col-md-6 col-4 align-self-center'>
                                                             <div class='text-end upgrade-btn'>
-                                                            <a href='EditDataKaryawan.php?nim_nik_unit=$row[nim_nik_unit]'
-                                                            class='btn btn-success d-none d-md-inline-block text-white'>Lihat / Edit Data</a>
-                                                            </div>
+                                                            <a href='DataKaryawan-lihat.php?nim_nik_unit=$row[nim_nik_unit]'
+                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-eye'></i> Lihat</a>
+                                                            <a href='DataKaryawan-delete.php?nim_nik_unit=$row[nim_nik_unit]'
+                                                            class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Hapus </a>
                                                          </div>
                                                     </td>
                                                 </tr>";

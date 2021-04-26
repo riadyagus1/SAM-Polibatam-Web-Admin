@@ -1,3 +1,10 @@
+<?php
+include 'koneksi.php';
+$nim_nik_unit   = $_GET['nim_nik_unit'];
+$tbl_user       = mysqli_query($koneksi, "select * from tbl_user where nim_nik_unit='$nim_nik_unit'");
+$row            = mysqli_fetch_array($tbl_user);
+
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -11,7 +18,7 @@
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>SAM Polibatam | Edit Data Karyawan</title>
+    <title>SAM Polibatam | Lihat Data Karyawan</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
@@ -88,10 +95,7 @@
                         <!-- ============================================================== -->
 
                         <li class="nav-item hidden-sm-down">
-                            <form class="app-search ps-3">
-                                <input type="text" class="form-control" placeholder="Cari data karyawan..."> <a
-                                    class="srh-btn"><i class="ti-search"></i></a>
-                            </form>
+                            
                         </li>
                     </ul>
 
@@ -192,7 +196,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
                                     <li class="breadcrumb-item active" aria-current="page"><a href="DataKaryawan.php">Data Karyawan</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Edit</li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Lihat Data Karyawan</li>
                                 </ol>
                             </nav>
                         </div>
@@ -215,15 +219,15 @@
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body profile-card">
-                                <center class="mt-4"> <img src="../assets/images/users/9.png"
+                                <center class="mt-4"> <img src= "<?php echo $row['foto_profile']; ?>"
                                         class="rounded-circle" width="150" />
-                                    <h4 class="card-title mt-2">Agus Riady</h4>
-                                    <h6 class="card-subtitle">3311901002</h6>
-                                    <h6 class="card-subtitle">Mahasiswa</h6><br>
+                                    <h4 class="card-title mt-2"><?php echo $row['name'];?></h4>
+                                    <h6 class="card-subtitle"><?php echo $row['nim_nik_unit'];?></h6>
+                                    <h6 class="card-subtitle"><?php echo $row['jabatan'];?></h6><br>
                                     <div class="col-md-6 col-4 align-self-center">
 				                        <div class="text-end upgrade-btn">
-				                            <a href="#"
-				                                class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Lihat Rekap Absen</a>
+				                            <a href="RekapAbsen.php"
+				                                class="btn btn-success d-none d-md-inline-block text-white">Lihat Rekap Absen</a>
 				                        </div>
 				                    </div>
                                 </center>
@@ -235,39 +239,39 @@
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material mx-2">
+                                <form class="form-horizontal form-material mx-2" method="post" action="EditDataKaryawan-update.php">
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">NIM</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="3311901002"
+                                            <input type="text" value="<?php echo $row['nim_nik_unit'];?>"
                                                 class="form-control ps-0 form-control-line" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">Nama Lengkap</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="Agus Riady"
+                                            <input type="text" value="<?php echo $row['name'];?>"
                                                 class="form-control ps-0 form-control-line" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">Jabatan</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="Mahasiswa"
+                                            <input type="text" value="<?php echo $row['jabatan'];?>"
                                                 class="form-control ps-0 form-control-line" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">Username</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="agus.3311901002"
+                                            <input type="text" value="<?php echo $row['username'];?>"
                                                 class="form-control ps-0 form-control-line" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">Email</label>
                                         <div class="col-md-12">
-                                            <input type="text" placeholder="riadyagus1@gmail.com"
+                                            <input type="text" value="<?php echo $row['email'];?>"
                                                 class="form-control ps-0 form-control-line" disabled>
                                         </div>
                                     </div>
@@ -294,20 +298,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-12">Lokasi WFH</label>
-                                        <div class="col-sm-12 border-bottom">
-                                            <select class="form-select shadow-none border-0 ps-0 form-control-line">
-                                                <option>Bengkong</option>
-                                                <option>Batam Centre</option>
-                                                <option>Batu Aji</option>
-                                                <option>Batu Ampar</option>
-                                                <option>Nongsa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-12 d-flex">
-                                            <button class="btn btn-success mx-auto mx-md-0 text-white">Update
-                                                Profile</button>
+                                        <div class="col-md-12">
+                                            <input type="text" value="<?php echo $row['alamat'];?>"
+                                                class="form-control ps-0 form-control-line" disabled>
                                         </div>
                                     </div>
                                 </form>
