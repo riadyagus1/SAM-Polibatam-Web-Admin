@@ -177,7 +177,7 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Manajemen Token API</h3>
+                        <h3 class="page-title mb-0 p-0">Tambah Token API</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -205,26 +205,26 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Edit Token API</h4>
+                                <h4 class="card-title">Tambah Token API Baru</h4>
                                 <form class="form-horizontal form-material mx-2" method="post" action="APItambah.php">
                                     <input type="hidden" value="<?php echo $row['api_token'];?>" name="api_token">
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">Token API</label>
                                         <div class="col-md-12">
-                                            <input type="text" name="api_token"
+                                            <input type="text" placeholder="Masukkan Token Baru..." name="api_token"
                                                 class="form-control ps-0 form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12 mb-0">Keterangan</label>
                                         <div class="col-md-12">
-                                            <input type="text" name="keterangan"
+                                            <input type="text" placeholder="Masukkan Keterangan..." name="keterangan"
                                                 class="form-control ps-0 form-control-line">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" value="simpan"
-                                            class='btn btn-success d-none d-md-inline-block text-white'>Simpan Perubahan</button>
+                                            class='btn btn-success d-none d-md-inline-block text-white'>Tambah Token API Baru</button>
                                         <a href='ManajemenTokenAPI.php'
                                             class='btn btn-danger d-none d-md-inline-block text-white'>Kembali</a>         
                                     </div>

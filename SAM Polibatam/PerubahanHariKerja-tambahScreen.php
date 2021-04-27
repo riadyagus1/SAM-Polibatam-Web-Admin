@@ -11,7 +11,7 @@
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>SAM Polibatam | Perubahan Hari Kerja</title>
+    <title>SAM Polibatam | Tambah Hari Libur</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
@@ -177,20 +177,15 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Perubahan Hari Kerja</h3>
+                        <h3 class="page-title mb-0 p-0">Tambah Hari Libur</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Perubahan Hari Kerja</li>
+                                    <li class="breadcrumb-item"><a href="PerubahanHariKerja.php">Perubahan Hari Kerja</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Tambah Hari Libur</li>
                                 </ol>
                             </nav>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-4 align-self-center">
-                        <div class="text-end upgrade-btn">
-                            <a href="PerubahanHariKerja-tambahScreen.php"
-                                class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-plus"></i> Tambah Hari Libur</a>
                         </div>
                     </div>
                 </div>
@@ -206,51 +201,37 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <!-- column -->
-                    <div class="col-sm-12">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Tabel Perubahan Hari Kerja</h4>
-                                <h6 class="card-subtitle">Data <code>Hari Libur</code></h6>
-                                <div class="table-responsive">
-                                    <table class="table user-table no-wrap">
-                                        <thead>
-                                            <tr>
-                                                <th class="border-top-0">Tanggal</th>
-                                                <th class="border-top-0">Keterangan</th>
-                                                <th class="border-top-0">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            include 'koneksi.php';
-                                            $tbl_hari_libur = mysqli_query($koneksi, "SELECT * from tbl_hari_libur");
-                                            foreach ($tbl_hari_libur as $row) {
-                                            echo "<tr>
-                                                    <td>" . $row['tanggal'] . "</td>
-                                                    <td>" . $row['keterangan'] . "</td>
-                                                    <td>
-                                                    <div class='col-md-6 col-4 align-self-center'>
-                                                    <div class='text-end upgrade-btn'>
-                                                        <a href='PerubahanHariKerja-editScreen.php?tanggal=$row[tanggal]'
-                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-edit'></i> Edit</a>
-                                                        <a href='PerubahanHariKerja-delete.php?tanggal=$row[tanggal]'
-                                                            class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Hapus </a>
-                                                </div></td>
-                                                </tr>";
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <h4 class="card-title">Tambah Hari Libur</h4>
+                                <form class="form-horizontal form-material mx-2" method="post" action="PerubahanHariKerja-tambah.php">
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Tanggal</label>
+                                        <div class="col-md-12">
+                                            <input type="date" placeholder="Pilih tanggal..." name="tanggal"
+                                                class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-12">Keterangan</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Masukkan Keterangan..." name="keterangan"
+                                                class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12 d-flex">
+                                            <button class="btn btn-success mx-auto mx-md-0 text-white">Simpan</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br>
+                                <p><strong>Note:</strong> Date Picker tidak didukung di Safari dan Internet Explorer 11 (atau yang lebih lawas).</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <script>
-                    $('#zero_config').DataTable();
-                </script>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
