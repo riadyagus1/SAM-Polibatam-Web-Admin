@@ -78,7 +78,7 @@
                 <!-- End Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    
+
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
@@ -94,7 +94,8 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
@@ -122,8 +123,8 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="DataKaryawan.php" aria-expanded="false">
-                                <i class="me-3 fas fa-users" aria-hidden="true"></i><span
-                                    class="hide-menu">Data Karyawan</span></a>
+                                <i class="me-3 fas fa-users" aria-hidden="true"></i><span class="hide-menu">Data
+                                    Karyawan</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="RekapAbsen.php" aria-expanded="false"><i class="me-3  fas fa-clipboard-check"
@@ -136,26 +137,25 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="LokasiWFH.php" aria-expanded="false"><i class="me-3 fas fa-map"
                                     aria-hidden="true"></i><span class="hide-menu">Lokasi WFH</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ApprovalLokasi.php" aria-expanded="false"><i class="me-3 fas fa-check-square"
                                     aria-hidden="true"></i><span class="hide-menu">Approval Lokasi WFH</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="PerubahanHariKerja.php" aria-expanded="false"><i class="me-3 fas fa-calendar-alt"
                                     aria-hidden="true"></i><span class="hide-menu">Perubahan Hari Kerja</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ManajemenTokenAPI.php" aria-expanded="false"><i class="me-3 fas fa-fire"
                                     aria-hidden="true"></i><span class="hide-menu">Manajemen Token API</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="Informasi.php" aria-expanded="false"><i class="me-3 fas fa-info-circle"
                                     aria-hidden="true"></i><span class="hide-menu">Informasi</span></a>
-                                </li>
+                        </li>
                         <li class="text-center p-20 upgrade-btn">
-                            <a href="Logout.php"
-                                class="btn btn-danger text-white mt-4">Log Out</a>
+                            <a href="Logout.php" class="btn btn-danger text-white mt-4">Log Out</a>
                         </li>
                     </ul>
 
@@ -205,7 +205,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Tabel Pengajuan Izin</h4>
-                                <h6 class="card-subtitle">Data yang ditampilakan adalah data izin yang diajukan melalui <code>Aplikasi SAM Polibatam</code></h6>
+                                <h6 class="card-subtitle">Data yang ditampilakan adalah data izin yang diajukan melalui
+                                    <code>Aplikasi SAM Polibatam</code></h6>
                                 <div class="table-responsive">
                                     <table class="table user-table no-wrap">
                                         <thead>
@@ -218,54 +219,72 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>3311901002</td>
-                                                <td>Agus Riady</td>
-                                                <td>31 Maret 2021</td>
-                                                <td>Acara Keluarga</td>
-                                                <td>
-                                                    <div class="col-md-6 col-4 align-self-center">
-                                                    <div class="text-end upgrade-btn">
-                                                        <a href="#"
-                                                            class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-check"></i> Terima</a>
-                                                        <a href="#"
-                                                            class="btn btn-danger d-none d-md-inline-block text-white"><i class="fas fa-times"></i> Tolak </a>
-                                                </div></td>
-                                            </tr>
+                                            <?php
+                                            include 'koneksi.php';
+                                            $sql = mysqli_query($koneksi, "SELECT  
+                                            tbl_absen_header.id,
+                                            tbl_user.name ,
+                                            tbl_izin.waktu_izin, tbl_izin.alasan 
+                                            FROM tbl_izin JOIN tbl_absen_header ON tbl_izin.id_header = tbl_absen_header.id 
+                                            JOIN
+                                            tbl_user ON tbl_absen_header.nim_nik_unit = tbl_user.nim_nik_unit ");
+                                            foreach ($sql as $row) {
+                                            echo "<tr>
+                                                    <td>" . $row['id'] . "</td>
+                                                    <td>" . $row['name'] . "</td>
+                                                    <td>" . $row['waktu_izin'] . "</td>
+                                                    <td>" . $row['alasan'] . "</td>
+                                                    <td> 
+                                                    <div class='col-md-6 col-4 align-self-center'>
+                                                    <div class='text-end upgrade-btn'>
+                                                        <a href='Aksi.php'
+                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
+                                                        <a href='Aksi.php'
+                                                            class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>
+                                                            </div>
+                                                            </div>
+                                                       </td>
+                                                   </tr>";
+                                               }
+                                               ?>
                                         </tbody>
-                                    </table>
                                 </div>
+                                </td>
+                                </tr>
+                                </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Container fluid  -->
+            <!-- End PAge Content -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-            <!-- footer -->
+            <!-- Right sidebar -->
             <!-- ============================================================== -->
-            <footer class="footer text-center">
-                © 2021 SAM Polibatam by <a href="https://www.polibatam.ac.id/">polibatam.ac.id</a>
-            </footer>
+            <!-- .right-sidebar -->
             <!-- ============================================================== -->
-            <!-- End footer -->
+            <!-- End Right sidebar -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
+        <!-- End Container fluid  -->
         <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            © 2021 SAM Polibatam by <a href="https://www.polibatam.ac.id/">polibatam.ac.id</a>
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->

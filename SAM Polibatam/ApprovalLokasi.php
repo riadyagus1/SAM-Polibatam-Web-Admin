@@ -78,7 +78,7 @@
                 <!-- End Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    
+
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
@@ -94,7 +94,8 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
@@ -122,8 +123,8 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="DataKaryawan.php" aria-expanded="false">
-                                <i class="me-3 fas fa-users" aria-hidden="true"></i><span
-                                    class="hide-menu">Data Karyawan</span></a>
+                                <i class="me-3 fas fa-users" aria-hidden="true"></i><span class="hide-menu">Data
+                                    Karyawan</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="RekapAbsen.php" aria-expanded="false"><i class="me-3  fas fa-clipboard-check"
@@ -136,26 +137,25 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="LokasiWFH.php" aria-expanded="false"><i class="me-3 fas fa-map"
                                     aria-hidden="true"></i><span class="hide-menu">Lokasi WFH</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ApprovalLokasi.php" aria-expanded="false"><i class="me-3 fas fa-check-square"
                                     aria-hidden="true"></i><span class="hide-menu">Approval Lokasi WFH</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="PerubahanHariKerja.php" aria-expanded="false"><i class="me-3 fas fa-calendar-alt"
                                     aria-hidden="true"></i><span class="hide-menu">Perubahan Hari Kerja</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ManajemenTokenAPI.php" aria-expanded="false"><i class="me-3 fas fa-fire"
                                     aria-hidden="true"></i><span class="hide-menu">Manajemen Token API</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="Informasi.php" aria-expanded="false"><i class="me-3 fas fa-info-circle"
                                     aria-hidden="true"></i><span class="hide-menu">Informasi</span></a>
-                                </li>
+                        </li>
                         <li class="text-center p-20 upgrade-btn">
-                            <a href="Logout.php"
-                                class="btn btn-danger text-white mt-4">Log Out</a>
+                            <a href="Logout.php" class="btn btn-danger text-white mt-4">Log Out</a>
                         </li>
                     </ul>
 
@@ -205,12 +205,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Tabel Pengajuan Lokasi WFH</h4>
-                                <h6 class="card-subtitle">Data yang ditampilakan adalah data yang diajukan melalui <code>Aplikasi SAM Polibatam</code></h6>
+                                <h6 class="card-subtitle">Data yang ditampilkan adalah data yang diajukan melalui
+                                    <code>Aplikasi SAM Polibatam</code></h6>
                                 <div class="table-responsive">
                                     <table class="table user-table no-wrap">
                                         <thead>
                                             <tr>
-                                                <th class="border-top-0">No</th>
+
                                                 <th class="border-top-0">NIM</th>
                                                 <th class="border-top-0">Nama</th>
                                                 <th class="border-top-0">Lokasi</th>
@@ -220,22 +221,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>3311901002</td>
-                                                <td>Agus Riady</td>
-                                                <td>Sei Panas</td>
-                                                <td>1.0000</td>
-                                                <td>1.0000</td>
-                                                <td>
-                                                    <div class="col-md-6 col-4 align-self-center">
-                                                    <div class="text-end upgrade-btn">
-                                                        <a href="#"
-                                                            class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-check"></i> Terima</a>
-                                                        <a href="#"
-                                                            class="btn btn-danger d-none d-md-inline-block text-white"><i class="fas fa-times"></i> Tolak </a>
-                                                </div></td>
-                                            </tr>
+                                            <?php
+                                            include 'koneksi.php';
+                                            $sql = mysqli_query($koneksi, "SELECT tbl_pengajuan_alamat.nim_nik_unit, tbl_user.name ,tbl_pengajuan_alamat.alamat, tbl_pengajuan_alamat.latitude, tbl_pengajuan_alamat.longitude FROM tbl_pengajuan_alamat JOIN tbl_user ON tbl_pengajuan_alamat.nim_nik_unit = tbl_user.nim_nik_unit ");
+                                            foreach ($sql as $row) {
+                                            echo "<tr>
+                                                    <td>" . $row['nim_nik_unit'] . "</td>
+                                                    <td>" . $row['name'] . "</td>
+                                                    <td>" . $row['alamat'] . "</td>
+                                                    <td>" . $row['latitude'] . "</td>
+                                                    <td>" . $row['longitude'] . "</td>
+                                                    <td> 
+                                                    <div class='col-md-6 col-4 align-self-center'>
+                                                    <div class='text-end upgrade-btn'>
+                                                        <a href='#'
+                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
+                                                        <a href='#'
+                                                            class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>
+                                                </div>
+                                                </div>
+                                                        
+                                                    </td>
+                                                </tr>";
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

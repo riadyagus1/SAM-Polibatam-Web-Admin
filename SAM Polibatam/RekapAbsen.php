@@ -198,7 +198,7 @@
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
                         <div class="text-end upgrade-btn">
-                            <a href="#"
+                            <a href="LaporanRekapAbsen.php"
                                 class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-print"></i> Export PDF</a>
                         </div>
                     </div>
@@ -239,48 +239,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>29 Maret 2021</td>
-                                                <td>Agus Riady</td>
-                                                <td>08:00</td>
-                                                <td>17:00</td>
-                                                <td>8 Jam</td>
-                                                <td>Polibatam</td>
-                                                <td><a href="#">FotoMasuk.jpg</a></td>
-                                                <td><a href="#">FotoKeluar.jpg</a></td>
-                                                <td>Hadir</td>
-                                                <td>
-                                                    <a href="#"
-                                                            class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-list"></i> List </a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>30 Maret 2021</td>
-                                                <td>Agus Riady</td>
-                                                <td>08:30</td>
-                                                <td>17:00</td>
-                                                <td>7 Jam 30 Menit</td>
-                                                <td>WFH</td>
-                                                <td><a href="#">FotoMasuk.jpg</a></td>
-                                                <td><a href="#">FotoKeluar.jpg</a></td>
-                                                <td>Hadir</td>
-                                                <td>
-                                                    <a href="#"
-                                                            class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-list"></i> List </a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>30 Maret 2021</td>
-                                                <td>Kevin Timoteus Sirait</td>
-                                                <td>08:30</td>
-                                                <td>17:00</td>
-                                                <td>7 Jam 30 Menit</td>
-                                                <td>WFH</td>
-                                                <td><a href="#">FotoMasuk.jpg</a></td>
-                                                <td><a href="#">FotoKeluar.jpg</a></td>
-                                                <td>Hadir</td>
-                                                <td>
-                                                    <a href="#"
-                                                            class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-list"></i> List </a></td>
-                                            </tr>
+                                        <?php
+                                            include 'koneksi.php';
+                                            $sql= mysqli_query($koneksi, "SELECT tbl_absen_header.tanggal_absen ,tbl_user.name , tbl_absen_masuk.jam_masuk ,tbl_absen_keluar.jam_keluar, tbl_user.alamat , tbl_absen_masuk.bukti_foto_masuk , tbl_absen_keluar.bukti_foto_keluar , tbl_absen_header.status FROM tbl_absen_header JOIN tbl_absen_masuk ON tbl_absen_header.id = tbl_absen_masuk.id_header JOIN tbl_absen_keluar ON tbl_absen_header.id = tbl_absen_keluar.id_header JOIN tbl_user ON tbl_absen_header.nim_nik_unit = tbl_user.nim_nik_unit");
+                                            foreach($sql as $row){
+                                            echo "<tr>
+                                                    <td>" . $row['tanggal_absen'] . "</td>
+                                                    <td>" . $row['name'] . "</td>
+                                                    <td>" . $row['jam_masuk'] . "</td>
+                                                    <td>" . $row['jam_keluar'] . "</td>
+                                                    <td>" . $row['lama_bekerja'] . "</td>
+                                                    <td>" . $row['alamat'] . "</td>
+                                                    <td>" . $row['bukti_foto_masuk'] . "</td>
+                                                    <td>" . $row['bukti_foto_keluar'] . "</td>
+                                                    <td>" . $row['status'] . "</td>
+                                                    <td>
+                                                        <div class='col-md-6 col-4 align-self-center'>
+                                                            <div class='text-end upgrade-btn'>
+                                                            <a href=#
+                                                            class='btn btn-success d-none d-md-inline-block text-white'>Lihat / Edit Data</a>
+                                                            </div>
+                                                         </div>
+                                                    </td>
+                                                </tr>";
+                                            }
+
+                                            ?>
+                                            </tbody>
                                     </table>
                                 </div>
                             </div>
