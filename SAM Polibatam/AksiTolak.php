@@ -1,9 +1,11 @@
 <?php
 
-	if (isset($_GET['IsAccepted'], $_GET['id_header'])) {
-	    $stmt = mysqli_prepare($conn, "DELETE FROM tbl_izin where id_header = ?");
-	    mysqli_stmt_bind_param($stmt, "sd", $_GET['IsAccepted'], $_GET['id_header']);
-	    $stmt->execute();
-	    $stmt->close();
-	    }
+	<?php
+	include 'koneksi.php';
+	$id = $_GET['id_header'];
+	$query="DELETE from tbl_izin WHERE id_header='$id';";
+	mysqli_query($koneksi, $query);
+
+	header("location:ApprovalIzin.php")
+?>
 ?>
