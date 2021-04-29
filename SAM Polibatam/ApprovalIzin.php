@@ -239,7 +239,7 @@
                                                     <div class='text-end upgrade-btn'>
                                                         <a href='Aksi.php'
                                                             class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
-                                                        <a href='Aksi.php'
+                                                        <a href='AksiTolak.php'
                                                             class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>
                                                             </div>
                                                             </div>
