@@ -35,7 +35,9 @@ if($result->status == "success") {
     header('Location: Home.php');
 }
 else {
-    echo "<script> alert('password salah');</script>";
+    $_SESSION['message'] = $array['message'];
+    $_SESSION['status'] = $array['status'];
+    //echo "<script> alert('password salah');</script>";
     header('Location: index.php');
     } 
 ?>

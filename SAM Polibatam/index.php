@@ -3,6 +3,13 @@ session_start();
 if(isset($_SESSION['login'])){
     header("Location: Home.php");
     exit;
+}elseif(!isset($_SESSION['status'])){
+	$warning = "";
+}else if($_SESSION['status'] == "error"){
+	$warning = "<div class='card bg-danger mb-3' style='margin-top: -25px; height:30px'>
+	<span class='text-light justify-center mx-auto text-justify mt-1'>Invalid Username/Password</span>
+	</div>";
+	
 }
 ?>
 <!DOCTYPE html>
@@ -30,7 +37,9 @@ if(isset($_SESSION['login'])){
 	<link rel="icon" type="image/png" href="../assets/images/favicon100.png">
 </head>
 <body>
-	
+
+
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -42,7 +51,7 @@ if(isset($_SESSION['login'])){
 					<span class="login100-form-title">
 						Login SAM Polibatam
 					</span>
-
+					<?= $warning;?>
 					<div class="wrap-input100 validate-input" data-validate = "Masukkan username dengan benar">
 						<input class="input100" type="text" name="username" placeholder="Username">
 						<span class="focus-input100"></span>
