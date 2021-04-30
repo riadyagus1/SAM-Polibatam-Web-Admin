@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+error_reporting(E_ALL ^ E_WARNING); 
 $data = array(
     "username"      => $_POST['username'],
     "password"      => $_POST['password'],
@@ -10,22 +11,31 @@ curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $result = json_decode(curl_exec($ch));
+$array = json_decode(json_encode($result), true);
+
+foreach ($array as $val){
+    $nama = $val['name'];
+}
 
 echo "<pre>";
-print_r($result);
+print_r($array);
 echo "</pre>";
 
-echo "Status    : ".$result->status.'<br>';
-echo "Message   : ".$result->message.'<br>';
+echo "Status    : ".$array['status'].'<br>';
+echo "Message   : ".$array['message'].'<br>';
+echo "Nama : ".$nama.'<br>';
 
 if($result->status == "success") {
 	// session_start();
-    $_SESSION['username'] = $username;
-    // $_SESSION['name'] = $name;
+    //$_SESSION['username'] = $username; 
+    $_SESSION['nama'] = $nama;
+    $_SESSION['login'] = true;
     // $_SESSION['nim_nik_unit'] = $nim_nik_unit;
 	// $_SESSION['jabatan'] = $jabatan;
-
-    header('location: Home.php');
-
+    header('Location: Home.php');
 }
+else {
+    echo "<script> alert('password salah');</script>";
+    header('Location: index.php');
+    } 
 ?>

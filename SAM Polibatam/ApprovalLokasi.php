@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -96,7 +103,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
+                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -223,8 +230,17 @@
                                         <tbody>
                                             <?php
                                             include 'koneksi.php';
-                                            $sql = mysqli_query($koneksi, "SELECT tbl_pengajuan_alamat.nim_nik_unit, tbl_user.name ,tbl_pengajuan_alamat.alamat, tbl_pengajuan_alamat.latitude, tbl_pengajuan_alamat.longitude FROM tbl_pengajuan_alamat JOIN tbl_user ON tbl_pengajuan_alamat.nim_nik_unit = tbl_user.nim_nik_unit ");
+                                            $sql = mysqli_query($koneksi, "SELECT tbl_pengajuan_alamat.nim_nik_unit, tbl_user.name ,tbl_pengajuan_alamat.alamat, tbl_pengajuan_alamat.latitude, tbl_pengajuan_alamat.longitude, tbl_pengajuan_alamat.isAccepted FROM tbl_pengajuan_alamat JOIN tbl_user ON tbl_pengajuan_alamat.nim_nik_unit = tbl_user.nim_nik_unit ");
                                             foreach ($sql as $row) {
+                                            if($row['isAccepted'] == '1'){
+                                                $status = "<span class='text-success'><i class='fas fa-check'></i> Pengajuan Disetujui</span>";
+                                            }else{
+                                                $status = "
+                                                <a href='Action/TerimaLokasi.php?id=".$row['nim_nik_unit']."'
+                                                    class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
+                                                <a href='Action/TolakLokasi.php?id=".$row['nim_nik_unit']."' 
+                                                    class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>";
+                                            }        
                                             echo "<tr>
                                                     <td>" . $row['nim_nik_unit'] . "</td>
                                                     <td>" . $row['name'] . "</td>
@@ -234,10 +250,7 @@
                                                     <td> 
                                                     <div class='col-md-6 col-4 align-self-center'>
                                                     <div class='text-end upgrade-btn'>
-                                                        <a href='#'
-                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
-                                                        <a href='#'
-                                                            class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>
+                                                        $status
                                                 </div>
                                                 </div>
                                                         

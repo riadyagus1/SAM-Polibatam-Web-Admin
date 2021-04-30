@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(!isset($_SESSION['login'])){
+    header("Location: index.php");
+    exit;
+}
+?>
+<?php
 include 'koneksi.php';
 $tanggal      = $_GET['tanggal'];
 $tbl_hari_libur  = mysqli_query($koneksi, "select * from tbl_hari_libur where tanggal='$tanggal'");
@@ -102,7 +109,7 @@ $row            = mysqli_fetch_array($tbl_hari_libur);
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
+                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>

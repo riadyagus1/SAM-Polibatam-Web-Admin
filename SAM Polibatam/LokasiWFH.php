@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -105,7 +112,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
+                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
                             </a>
                         </li>
                     </ul>

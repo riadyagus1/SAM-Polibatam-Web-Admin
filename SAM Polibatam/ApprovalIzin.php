@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -96,7 +103,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
+                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -224,11 +231,20 @@
                                             $sql = mysqli_query($koneksi, "SELECT  
                                             tbl_absen_header.id,
                                             tbl_user.name ,
-                                            tbl_izin.waktu_izin, tbl_izin.alasan 
+                                            tbl_izin.waktu_izin, tbl_izin.alasan, tbl_izin.isAccepted 
                                             FROM tbl_izin JOIN tbl_absen_header ON tbl_izin.id_header = tbl_absen_header.id 
                                             JOIN
                                             tbl_user ON tbl_absen_header.nim_nik_unit = tbl_user.nim_nik_unit ");
                                             foreach ($sql as $row) {
+                                            if($row['isAccepted'] == '1'){
+                                                $status = "<span class='text-success'><i class='fas fa-check'></i> Pengajuan Disetujui</span>";
+                                            }else{
+                                                $status = "
+                                                <a href='Action/TerimaIzin.php?id=".$row['id']."'
+                                                    class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
+                                                <a href='Action/TolakIzin.php?id=".$row['id']."' 
+                                                    class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>";
+                                            }    
                                             echo "<tr>
                                                     <td>" . $row['id'] . "</td>
                                                     <td>" . $row['name'] . "</td>
@@ -237,12 +253,9 @@
                                                     <td> 
                                                     <div class='col-md-6 col-4 align-self-center'>
                                                     <div class='text-end upgrade-btn'>
-                                                        <a href='Aksi.php'
-                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
-                                                        <a href='AksiTolak.php'
-                                                            class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>
-                                                            </div>
-                                                            </div>
+                                                        $status
+                                                    </div>
+                                                    </div>
                                                        </td>
                                                    </tr>";
                                                }

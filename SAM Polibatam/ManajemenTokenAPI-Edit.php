@@ -4,7 +4,13 @@ $api_token      = $_GET['api_token'];
 $tbl_api_token  = mysqli_query($koneksi, "select * from tbl_api_token where api_token='$api_token'");
 $row            = mysqli_fetch_array($tbl_api_token);
 
+session_start();
+if(!isset($_SESSION['login'])){
+    header("Location: index.php");
+    exit;
+}
 ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -102,7 +108,7 @@ $row            = mysqli_fetch_array($tbl_api_token);
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
+                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
                             </a>
                             <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>

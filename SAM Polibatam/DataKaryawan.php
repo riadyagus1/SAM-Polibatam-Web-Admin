@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -106,8 +113,9 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
                             </a>
                         </li>
                     </ul>
@@ -199,10 +207,6 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                        <div class="text-end upgrade-btn">
-                            <a href="exportPDFDataKaryawan.php"
-                                class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-print"></i> Export PDF</a>
-                        </div>
                     </div>
                 </div>
             </div>

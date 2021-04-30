@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['login'])){
+    header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -105,7 +112,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
+                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
                             </a>
                         </li>
                     </ul>
@@ -198,7 +205,7 @@
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
                         <div class="text-end upgrade-btn">
-                            <a href="LaporanRekapAbsen.php"
+                            <a href="RekapAbsen-exportPDF.php"
                                 class="btn btn-success d-none d-md-inline-block text-white"><i class="fas fa-print"></i> Export PDF</a>
                         </div>
                     </div>
@@ -243,24 +250,22 @@
                                             include 'koneksi.php';
                                             $sql= mysqli_query($koneksi, "SELECT tbl_absen_header.tanggal_absen ,tbl_user.name , tbl_absen_masuk.jam_masuk ,tbl_absen_keluar.jam_keluar, tbl_user.alamat , tbl_absen_masuk.bukti_foto_masuk , tbl_absen_keluar.bukti_foto_keluar , tbl_absen_header.status FROM tbl_absen_header JOIN tbl_absen_masuk ON tbl_absen_header.id = tbl_absen_masuk.id_header JOIN tbl_absen_keluar ON tbl_absen_header.id = tbl_absen_keluar.id_header JOIN tbl_user ON tbl_absen_header.nim_nik_unit = tbl_user.nim_nik_unit");
                                             foreach($sql as $row){
+                                                $jam_masuk = date_create($row['jam_masuk']);
+                                                $jam_keluar = date_create($row['jam_keluar']);
+                                                $lama_bekerja = date_diff($jam_masuk,$jam_keluar);
                                             echo "<tr>
                                                     <td>" . $row['tanggal_absen'] . "</td>
                                                     <td>" . $row['name'] . "</td>
                                                     <td>" . $row['jam_masuk'] . "</td>
                                                     <td>" . $row['jam_keluar'] . "</td>
-                                                    <td>" . $row['lama_bekerja'] . "</td>
+                                                    <td>" . $lama_bekerja->h, ':'. $lama_bekerja->i, ':'. $lama_bekerja->s . ' Jam'."</td>
                                                     <td>" . $row['alamat'] . "</td>
                                                     <td>" . $row['bukti_foto_masuk'] . "</td>
                                                     <td>" . $row['bukti_foto_keluar'] . "</td>
                                                     <td>" . $row['status'] . "</td>
                                                     <td>
-                                                        <div class='col-md-6 col-4 align-self-center'>
-                                                            <div class='text-end upgrade-btn'>
-                                                            <a href=#
-                                                            class='btn btn-success d-none d-md-inline-block text-white'>Lihat / Edit Data</a>
-                                                            </div>
-                                                         </div>
-                                                    </td>
+                                                    <a href='#'
+                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-list'></i> List </a></td>
                                                 </tr>";
                                             }
 
