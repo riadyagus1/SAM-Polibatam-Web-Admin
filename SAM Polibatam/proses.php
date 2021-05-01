@@ -25,7 +25,7 @@ echo "Status    : ".$array['status'].'<br>';
 echo "Message   : ".$array['message'].'<br>';
 echo "Nama : ".$nama.'<br>';
 
-if($result->status == "success") {
+if($result->status == "success" && ($result->data->nim_nik_unit == "3311901002" || $result->data->nim_nik_unit == "3311901018" || $result->data->nim_nik_unit == "3311901049" || $result->data->nim_nik_unit == "117175" || $result->data->nim_nik_unit == "3312001012")) {
 	// session_start();
     //$_SESSION['username'] = $username; 
     $_SESSION['nama'] = $nama;

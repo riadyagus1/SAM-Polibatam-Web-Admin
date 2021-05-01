@@ -7,9 +7,12 @@ if(isset($_SESSION['login'])){
 	$warning = "";
 }else if($_SESSION['status'] == "error"){
 	$warning = "<div class='card bg-danger mb-3' style='margin-top: -25px; height:30px'>
-	<span class='text-light justify-center mx-auto text-justify mt-1'>Invalid Username/Password</span>
+	<span class='text-light justify-center mx-auto text-justify mt-1'>Username / Password Salah</span>
 	</div>";
-	
+}elseif("username" !== "agus.3311901002" || "username" !== "tasya.3311901018" || "username" !== "kevin.3311901049" || "username" !== "hamdaniari" || "username" !== "franstio.3312001012"){
+	$warning = "<div class='card bg-danger mb-3' style='margin-top: -25px; height:30px'>
+	<span class='text-light justify-center mx-auto text-justify mt-1'>Anda Tidak Memiliki Hak Akses</span>
+	</div>";
 }
 ?>
 <!DOCTYPE html>
