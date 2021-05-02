@@ -221,6 +221,7 @@ if(!isset($_SESSION['login'])){
 
                                                 <th class="border-top-0">NIM</th>
                                                 <th class="border-top-0">Nama</th>
+                                                <th class="border-top-0">Tanggal Pengajuan</th>
                                                 <th class="border-top-0">Lokasi</th>
                                                 <th class="border-top-0">Latitude</th>
                                                 <th class="border-top-0">Longitude</th>
@@ -230,7 +231,7 @@ if(!isset($_SESSION['login'])){
                                         <tbody>
                                             <?php
                                             include 'koneksi.php';
-                                            $sql = mysqli_query($koneksi, "SELECT tbl_pengajuan_alamat.nim_nik_unit, tbl_user.name ,tbl_pengajuan_alamat.alamat, tbl_pengajuan_alamat.latitude, tbl_pengajuan_alamat.longitude, tbl_pengajuan_alamat.isAccepted FROM tbl_pengajuan_alamat JOIN tbl_user ON tbl_pengajuan_alamat.nim_nik_unit = tbl_user.nim_nik_unit ");
+                                            $sql = mysqli_query($koneksi, "SELECT tbl_pengajuan_alamat.nim_nik_unit, tbl_user.name, tbl_pengajuan_alamat.tanggal_pengajuan ,tbl_pengajuan_alamat.alamat, tbl_pengajuan_alamat.latitude, tbl_pengajuan_alamat.longitude, tbl_pengajuan_alamat.isAccepted FROM tbl_pengajuan_alamat JOIN tbl_user ON tbl_pengajuan_alamat.nim_nik_unit = tbl_user.nim_nik_unit ");
                                             foreach ($sql as $row) {
                                             if($row['isAccepted'] == '1'){
                                                 $status = "<span class='text-success'><i class='fas fa-check'></i> Pengajuan Disetujui</span>";
@@ -244,6 +245,7 @@ if(!isset($_SESSION['login'])){
                                             echo "<tr>
                                                     <td>" . $row['nim_nik_unit'] . "</td>
                                                     <td>" . $row['name'] . "</td>
+                                                    <td>" . $row['tanggal_pengajuan'] . "</td>
                                                     <td>" . $row['alamat'] . "</td>
                                                     <td>" . $row['latitude'] . "</td>
                                                     <td>" . $row['longitude'] . "</td>
