@@ -218,44 +218,40 @@ if(!isset($_SESSION['login'])){
                                     <table class="table user-table no-wrap">
                                         <thead>
                                             <tr>
-
-                                                <th class="border-top-0">NIM</th>
+                                                <th class="border-top-0">NIM / NIK Unit</th>
                                                 <th class="border-top-0">Nama</th>
                                                 <th class="border-top-0">Tanggal Pengajuan</th>
-                                                <th class="border-top-0">Lokasi</th>
-                                                <th class="border-top-0">Latitude</th>
-                                                <th class="border-top-0">Longitude</th>
+                                                <th class="border-top-0">Detail Lokasi</th>
                                                 <th class="border-top-0">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             include 'koneksi.php';
-                                            $sql = mysqli_query($koneksi, "SELECT tbl_pengajuan_alamat.nim_nik_unit, tbl_user.name, tbl_pengajuan_alamat.tanggal_pengajuan ,tbl_pengajuan_alamat.alamat, tbl_pengajuan_alamat.latitude, tbl_pengajuan_alamat.longitude, tbl_pengajuan_alamat.isAccepted FROM tbl_pengajuan_alamat JOIN tbl_user ON tbl_pengajuan_alamat.nim_nik_unit = tbl_user.nim_nik_unit ");
+                                            $sql = mysqli_query($koneksi, "SELECT tbl_pengajuan_alamat.id, tbl_pengajuan_alamat.nim_nik_unit, tbl_user.name, tbl_pengajuan_alamat.tanggal_pengajuan ,tbl_pengajuan_alamat.alamat, tbl_pengajuan_alamat.latitude, tbl_pengajuan_alamat.longitude, tbl_pengajuan_alamat.isAccepted FROM tbl_pengajuan_alamat JOIN tbl_user ON tbl_pengajuan_alamat.nim_nik_unit = tbl_user.nim_nik_unit ");
                                             foreach ($sql as $row) {
                                             if($row['isAccepted'] == '1'){
                                                 $status = "<span class='text-success'><i class='fas fa-check'></i> Pengajuan Disetujui</span>";
                                             }else{
                                                 $status = "
-                                                <a href='Action/TerimaLokasi.php?id=".$row['nim_nik_unit']."'
+                                                <a href='Action/TerimaLokasi.php?id=".$row['id']."&alamat=".$row['alamat']."&lat=".$row['latitude']."&lng=".$row['longitude']."&nnk=".$row['nim_nik_unit']."'
                                                     class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
-                                                <a href='Action/TolakLokasi.php?id=".$row['nim_nik_unit']."' 
+                                                <a href='Action/TolakLokasi.php?id=".$row['id']."' 
                                                     class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>";
-                                            }        
+                                            }
                                             echo "<tr>
                                                     <td>" . $row['nim_nik_unit'] . "</td>
                                                     <td>" . $row['name'] . "</td>
                                                     <td>" . $row['tanggal_pengajuan'] . "</td>
-                                                    <td>" . $row['alamat'] . "</td>
-                                                    <td>" . $row['latitude'] . "</td>
-                                                    <td>" . $row['longitude'] . "</td>
-                                                    <td> 
+                                                    <td><a href='ApprovalLokasi-detail.php?id=$row[id]'
+                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-map-pin'></i> Detail</a>
+                                                            </td>
+                                                    <td>
                                                     <div class='col-md-6 col-4 align-self-center'>
                                                     <div class='text-end upgrade-btn'>
                                                         $status
                                                 </div>
                                                 </div>
-                                                        
                                                     </td>
                                                 </tr>";
                                             }

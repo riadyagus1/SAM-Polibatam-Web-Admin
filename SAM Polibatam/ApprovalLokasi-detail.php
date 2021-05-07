@@ -5,6 +5,13 @@ if(!isset($_SESSION['login'])){
     exit;
 }
 ?>
+<?php
+include 'koneksi.php';
+$id                    = $_GET['id'];
+$tbl_pengajuan_alamat  = mysqli_query($koneksi, "select * from tbl_pengajuan_alamat where id='$id'");
+$row                   = mysqli_fetch_array($tbl_pengajuan_alamat);
+
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -18,7 +25,7 @@ if(!isset($_SESSION['login'])){
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>SAM Polibatam | Lokasi WFH</title>
+    <title>SAM Polibatam | Detail Approval Lokasi WFH</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
@@ -43,7 +50,7 @@ if(!isset($_SESSION['login'])){
 <![endif]-->
 </head>
 
-<body onload=OnloadMap(1.118437,104.048471);>
+<body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -115,6 +122,7 @@ if(!isset($_SESSION['login'])){
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
                             </a>
+                            <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
                 </div>
@@ -194,12 +202,13 @@ if(!isset($_SESSION['login'])){
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Lokasi WFH</h3>
+                        <h3 class="page-title mb-0 p-0">Detail Approval Lokasi WFH</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Lokasi WFH</li>
+                                    <li class="breadcrumb-item"><a href="ApprovalLokasi.php">Approval Lokasi WFH</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Detail Approval Lokasi WFH</li>
                                 </ol>
                             </nav>
                         </div>
@@ -213,9 +222,6 @@ if(!isset($_SESSION['login'])){
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -574,6 +580,52 @@ if(!isset($_SESSION['login'])){
                     </div>
                 </div>
                 <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Detail Approval Lokasi WFH</h4>
+                                <form class="form-horizontal form-material mx-2" method="post" action="PerubahanHariKerja-edit.php">
+                                    <input type="hidden" value="<?php echo $row['id'];?>" name="tanggal">
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Lokasi</label>
+                                        <div class="col-md-12">
+                                            <input type="text" value="<?php echo $row['alamat'];?>" name="alamat"
+                                                class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Latitude</label>
+                                        <div class="col-md-12">
+                                            <input type="text" value="<?php echo $row['latitude'];?>" name="latitude"
+                                                class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 mb-0">Longitude</label>
+                                        <div class="col-md-12">
+                                            <input type="text" value="<?php echo $row['longitude'];?>" name="longitude"
+                                                class="form-control ps-0 form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <?php
+                                        echo"
+                                        <a href='#' class='btn waves-effect waves-light btn-info' onclick=gotoClick(".$row['latitude'].",".$row['longitude'].")>
+                                        <i class='fas fa-location-arrow'></i> Goto Location</a>"
+                                        ?>
+                                        <a href='ApprovalLokasi.php'
+                                            class='btn btn-success d-none d-md-inline-block text-white'>Kembali</a>       
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
@@ -582,56 +634,8 @@ if(!isset($_SESSION['login'])){
                 <!-- .right-sidebar -->
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
-
-                <!-- Tabel -->
-                <div class="row">
-                    <!-- column -->
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Tabel Alamat WFH</h4>
-                                <br>
-                                <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered no-wrap">
-                                        <thead>
-                                            <tr>
-                                                <th class="border-top-0">NIM / NIK Unit</th>
-                                                <th class="border-top-0">Nama</th>
- 					        <th class="border-top-0">Alamat</th>
-                                                <th class="border-top-0">Latitude</th>
-                                                <th class="border-top-0">Longitude</th>
-                                                <th class="border-top-0">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-						<?php
-                                            		include 'koneksi.php';
-                                            		$sql = mysqli_query($koneksi, "SELECT nim_nik_unit,name,alamat,address_latitude,address_longitude from tbl_user;");
-                                              		foreach ($sql as $row) {
-								if ($row['alamat'] != null) {
-									echo "<tr> <td>" . $row['nim_nik_unit'] . "</td> <td>" . $row['name'] . "</td> <td>" . $row['alamat'] . "</td> <td>" . $row['address_latitude'] . "</td> <td>" . $row['address_longitude'] . "</td> 
-                                    <td> 
-                                    <div class='col-md-6 col-4 align-self-center'> 
-                                    <div class='text-end upgrade-btn'> 
-                                    <a href='#' class='btn waves-effect waves-light btn-info' onclick=gotoClick(".$row['address_latitude'].",".$row['address_longitude'].")>
-                                    <i class='fas fa-location-arrow'></i> Goto Location</a> 
-                                    </div> 
-                                    </div> 
-                                    </td> </tr>";
-								}
-							}
-					       ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                     <!-- End Table -->
+                <!-- ============================================================== -->
             </div>
-            <script>
-                 $('#zero_config').DataTable();
-            </script>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->

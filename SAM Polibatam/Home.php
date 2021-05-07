@@ -9,6 +9,10 @@ if(!isset($_SESSION['login'])){
 <html dir="ltr" lang="en">
 
 <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="chart/setup.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -215,14 +219,48 @@ if(!isset($_SESSION['login'])){
                             <div class="card-body">
                                 <h4 class="card-title">Total Presensi Hari Ini</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0"> 80 Orang</h2>
-                                    <span class="text-muted">Senin, 29 Maret 2021</span>
+                                    <?php
+					include 'koneksi.php';
+					$date = date('Y-m-d');
+					$sql1 = "SELECT COUNT(*) as total from tbl_absen_header WHERE (status='Hadir WFO' OR status='Hadir WFH') AND tanggal_absen='$date';";
+					$sql2 = "SELECT COUNT(*) as allTotal from tbl_absen_header WHERE tanggal_absen='$date';";
+
+					$result1 = $koneksi->query($sql1);
+					$result2 = $koneksi->query($sql2);
+
+					if (!$result1) {
+						echo "Unable to get data!";
+					}
+
+					$row1 = $result1->fetch_assoc()['total'];
+
+					if (!$result2) {
+						echo "Unable to get data!";
+					}
+
+					$row2 = $result2->fetch_assoc()['allTotal'];
+
+					$percentage = ($row1 / $row2) * 100;
+				    ?>
+
+                                    <?php echo "<h2 class='font-light mb-0'>" .$row1. " Orang</h2>"; ?>
+                                    <span id="datetime" class="text-muted">Date Now</span>
+				    <script>
+                                        const dayNames = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+					const monthNames = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+					var dt = new Date();
+					var day = dt.getDay();
+                                        var dd = dt.getDate();
+                                        var mm = dt.getMonth();
+                                        var yy = dt.getFullYear();
+					document.getElementById("datetime").innerHTML = dayNames[day] + ", " + dd + " " + monthNames[mm] + " " + yy;
+				    </script>
                                 </div>
-                                <span class="text-success">80%</span>
+                                <?php echo "<span class='text-success'>" .$percentage. "</span>"; ?>
                                 <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar"
-                                        style="width: 80%; height: 6px;" aria-valuenow="25" aria-valuemin="0"
-                                        aria-valuemax="100"></div>
+                                    <?php
+					echo '<div class="progress-bar bg-success" role="progressbar" style="width:"' .$percentage. '%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>';
+				    ?>
                                 </div>
                             </div>
                         </div>
@@ -232,15 +270,25 @@ if(!isset($_SESSION['login'])){
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Jumlah Karyawan Yang Sudah Login</h4>
+                                <h4 class="card-title">Jumlah Karyawan Yang Sudah Terdaftar</h4>
                                 <div class="text-end">
-                                    <h2 class="font-light mb-0">100 Orang</h2>
+				<?php
+					include 'koneksi.php';
+
+					$sql = "SELECT COUNT(*) as total from tbl_user;";
+					$result = $koneksi->query($sql);
+					if ($result->num_rows > 0) {
+						while ($row = $result->fetch_assoc()) {
+							echo "<h2 class='font-light mb-0'> ". $row['total'] . " Orang</h2>";
+						}
+					}
+				?>
                                     <span class="text-muted">Karyawan</span>
                                 </div>
-                                <span class="text-info">30%</span>
+                                <span class="text-info">100%</span>
                                 <div class="progress">
                                     <div class="progress-bar bg-info" role="progressbar"
-                                        style="width: 30%; height: 6px;" aria-valuenow="25" aria-valuemin="0"
+                                        style="width: 100%; height: 6px;" aria-valuenow="25" aria-valuemin="0"
                                         aria-valuemax="100"></div>
                                 </div>
                             </div>
@@ -257,12 +305,12 @@ if(!isset($_SESSION['login'])){
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Statistik Kehadiran</h4>
-                                <h6 class="card-subtitle">Bulan: <code>Maret 2021</code></h6>
-                                <div class="flot-chart">
-                                    <div class="flot-chart-content " id="flot-line-chart"
-                                        style="padding: 0px; position: relative;">
-                                        <canvas class="flot-base w-100" height="400"></canvas>
-                                    </div>
+                                <h6 class="card-subtitle">Bulan: <code id="currMonth">CurrMonth with CurrYear</code></h6>
+				<script>
+					document.getElementById("currMonth").innerHTML = monthNames[mm] + " " + yy;
+				</script>
+                                <div>
+                                        <canvas id="attChart"></canvas>
                                 </div>
                             </div>
                         </div>
