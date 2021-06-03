@@ -234,7 +234,7 @@ if(!isset($_SESSION['login'])){
                                                 $status = "<span class='text-success'><i class='fas fa-check'></i> Pengajuan Disetujui</span>";
                                             }else{
                                                 $status = "
-                                                <a href='Action/TerimaLokasi.php?id=".$row['id']."&alamat=".$row['alamat']."&lat=".$row['latitude']."&lng=".$row['longitude']."&nnk=".$row['nim_nik_unit']."'
+                                                <a href='Action/TerimaLokasi.php?id=".$row['id']."&alamat=".$row['alamat']."&latitude=".$row['latitude']."&longitude=".$row['longitude']."&nim_nik_unit=".$row['nim_nik_unit']."'
                                                     class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
                                                 <a href='Action/TolakLokasi.php?id=".$row['id']."' 
                                                     class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>";
