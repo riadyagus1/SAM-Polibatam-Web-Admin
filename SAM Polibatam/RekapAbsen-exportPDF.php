@@ -15,10 +15,9 @@ $pdf->ln(1);
 $pdf->ln(1);
 $pdf->SetFont('Arial','B',9);
 $pdf->Cell(4,0.6,'Tanggal',1,0,'C',0);
-$pdf->Cell(6,0.6,'Nama',1,0,'C',0);
-$pdf->Cell(4,0.6,'Jam Masuk',1,0,'C',0);
-$pdf->Cell(4,0.6,'Jam Keluar',1,0,'C',0);
-$pdf->Cell(5,0.6,'Lokasi',1,0,'C',0);
+$pdf->Cell(10,0.6,'Nama',1,0,'C',0);
+$pdf->Cell(5,0.6,'Jam Masuk',1,0,'C',0);
+$pdf->Cell(5,0.6,'Jam Keluar',1,0,'C',0);
 $pdf->Cell(4,0.6,'Status',1,1,'C',0);
 $pdf->SetFont('Arial','',10);
 $no=1;
@@ -26,10 +25,9 @@ $query = mysqli_query($koneksi," select tbl_absen_header.tanggal_absen ,tbl_user
 ");
 while($lihat= mysqli_fetch_array($query)){
     $pdf->Cell(4,0.6,$lihat['tanggal_absen'],1,0,'C',0);
-    $pdf->Cell(6,0.6,$lihat['name'],1,0,'C',0);
-    $pdf->Cell(4,0.6,$lihat['jam_masuk'],1,0,'C',0);
-    $pdf->Cell(4,0.6,$lihat['jam_keluar'],1,0,'C',0);
-    $pdf->Cell(5,0.6,$lihat['alamat'],1,0,'C',0);
+    $pdf->Cell(10,0.6,$lihat['name'],1,0,'C',0);
+    $pdf->Cell(5,0.6,$lihat['jam_masuk'],1,0,'C',0);
+    $pdf->Cell(5,0.6,$lihat['jam_keluar'],1,0,'C',0);
     $pdf->Cell(4,0.6,$lihat['status'],1,1,'C',0);
 }
 $pdf->Output("RekapAbsen.php","I");

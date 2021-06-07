@@ -200,7 +200,7 @@ if(!isset($_SESSION['login'])){
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a href="DataKaryawan.php">Data Karyawan</a></li>
+                                    <li class="breadcrumb-item" aria-current="page"><a href="DataKaryawan.php">Data Karyawan</a></li>
                                     <li class="breadcrumb-item active" aria-current="page"> Lihat Data Karyawan</li>
                                 </ol>
                             </nav>
@@ -231,8 +231,9 @@ if(!isset($_SESSION['login'])){
                                     <h6 class="card-subtitle"><?php echo $row['jabatan'];?></h6><br>
                                     <div class="col-md-6 col-4 align-self-center">
 				                        <div class="text-end upgrade-btn">
-				                            <a href="RekapAbsen.php"
-				                                class="btn btn-success d-none d-md-inline-block text-white">Lihat Rekap Absen</a>
+                                            <?php 
+                                            echo "<a href='DataKaryawan-lihatRekap.php?nim_nik_unit=$row[nim_nik_unit]&name=$row[name]' class='btn btn-success d-none d-md-inline-block text-white'>Lihat Rekap Absen</a>";
+                                            ?>
 				                        </div>
 				                    </div>
                                 </center>
@@ -277,27 +278,6 @@ if(!isset($_SESSION['login'])){
                                         <label class="col-md-12 mb-0">Email</label>
                                         <div class="col-md-12">
                                             <input type="text" value="<?php echo $row['email'];?>"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Jam Kerja</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="08:00 - 17:00"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Jam Istirahat</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="12:00 - 13:00"
-                                                class="form-control ps-0 form-control-line" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-12 mb-0">Lokasi Kantor</label>
-                                        <div class="col-md-12">
-                                            <input type="text" placeholder="Politeknik Negeri Batam"
                                                 class="form-control ps-0 form-control-line" disabled>
                                         </div>
                                     </div>

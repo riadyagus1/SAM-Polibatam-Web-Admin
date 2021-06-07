@@ -4,7 +4,19 @@ if(!isset($_SESSION['login'])){
     header("Location: index.php");
     exit;
 }
+
+include 'koneksi.php';
+$nim_nik_unit   = $_GET['nim_nik_unit'];
+$name           = $_GET['name'];
+
+$sql= mysqli_query($koneksi, "SELECT `tbl_absen_header`.`tanggal_absen`, `tbl_absen_header`.`nim_nik_unit`, `tbl_absen_masuk`.`jam_masuk`, `tbl_absen_keluar`.`jam_keluar`, `tbl_absen_masuk`.`bukti_foto_masuk`, `tbl_absen_keluar`.`bukti_foto_keluar`, `tbl_absen_header`.`status`, `tbl_absen_keluar`.`lokasi_keluar`, `tbl_user`.`name`
+FROM `tbl_absen_header` 
+    LEFT JOIN `tbl_absen_masuk` ON `tbl_absen_masuk`.`id_header` = `tbl_absen_header`.`id` 
+    LEFT JOIN `tbl_absen_keluar` ON `tbl_absen_keluar`.`id_header` = `tbl_absen_header`.`id` 
+    LEFT JOIN `tbl_user` ON `tbl_absen_header`.`nim_nik_unit` = `tbl_user`.`nim_nik_unit`
+WHERE `tbl_absen_header`.`nim_nik_unit` = '$nim_nik_unit'");
 ?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -18,7 +30,7 @@ if(!isset($_SESSION['login'])){
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>SAM Polibatam | Data Karyawan</title>
+    <title>SAM Polibatam | Rekap Absen Individu</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
@@ -101,8 +113,6 @@ if(!isset($_SESSION['login'])){
                     <!-- ============================================================== -->
                     <ul class="navbar-nav me-auto mt-md-0 ">
                         <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
                     </ul>
 
                     <!-- ============================================================== -->
@@ -114,7 +124,7 @@ if(!isset($_SESSION['login'])){
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">Agus Riady
+                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
                             </a>
                         </li>
                     </ul>
@@ -195,17 +205,19 @@ if(!isset($_SESSION['login'])){
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Data Karyawan</h3>
+                        <h3 class="page-title mb-0 p-0">Rekap Absen Individu</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Data Karyawan</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Rekap Absen Individu</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
+                        <div class="text-end upgrade-btn">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -214,7 +226,7 @@ if(!isset($_SESSION['login'])){
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Container fluid  -->
-            <!-- Tabel -->
+            <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
@@ -224,50 +236,55 @@ if(!isset($_SESSION['login'])){
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Tabel Identitas Karyawan</h4>
-                                <h6 class="card-subtitle">Data yang ditampilakan hanya karyawan yang sudah pernah login ke <code>Aplikasi SAM Polibatam</code></h6>
+                                <h4 class="card-title">Tabel Kehadiran</h4>
+                                <h6 class="card-subtitle">Nama: <code><?php echo $name;?></code></h6>
                                 <br>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>
-                                                <th class="border-top-0">NIM</th>
+                                                <th class="border-top-0">Tanggal</th>
                                                 <th class="border-top-0">Nama</th>
-                                                <th class="border-top-0">Jabatan</th>
-                                                <th class="border-top-0">Lokasi WFH</th>
-                                                <th class="border-top-0">Aksi</th>
+                                                <th class="border-top-0">Jam Masuk</th>
+                                                <th class="border-top-0">Jam Keluar</th>
+                                                <th class="border-top-0">Lama Waktu Bekerja</th>
+                                                <th class="border-top-0">Lokasi</th>
+                                                <th class="border-top-0">Foto Masuk</th>
+                                                <th class="border-top-0">Foto Pulang</th>
+                                                <th class="border-top-0">Status</th>
+                                                <th class="border-top-0">To Do List</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                            include 'koneksi.php';
-                                            $tbl_user = mysqli_query($koneksi, "SELECT * from tbl_user");
-                                            foreach ($tbl_user as $row) {
+                                        <?php
+                                            foreach($sql as $row){
+                                                $jam_masuk = date_create($row['jam_masuk']);
+                                                $jam_keluar = date_create($row['jam_keluar']);
+                                                $lama_bekerja = date_diff($jam_masuk,$jam_keluar);
                                             echo "<tr>
-                                                    <td>" . $row['nim_nik_unit'] . "</td>
+                                                    <td>" . $row['tanggal_absen'] . "</td>
                                                     <td>" . $row['name'] . "</td>
-                                                    <td>" . $row['jabatan'] . "</td>
-                                                    <td>" . $row['alamat'] . "</td>
+                                                    <td>" . $row['jam_masuk'] . "</td>
+                                                    <td>" . $row['jam_keluar'] . "</td>
+                                                    <td>" . $lama_bekerja->h, ':'. $lama_bekerja->i, ':'. $lama_bekerja->s . ' Jam'."</td>
+                                                    <td>" . $row['lokasi_keluar'] . "</td>
+                                                    <td>" . $row['bukti_foto_masuk'] . "</td>
+                                                    <td>" . $row['bukti_foto_keluar'] . "</td>
+                                                    <td>" . $row['status'] . "</td>
                                                     <td>
-                                                        <div class='col-md-6 col-4 align-self-center'>
-                                                            <div class='text-end upgrade-btn'>
-                                                            <a href='DataKaryawan-lihat.php?nim_nik_unit=$row[nim_nik_unit]'
-                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-eye'></i> Lihat</a>
-                                                            <a href='DataKaryawan-delete.php?nim_nik_unit=$row[nim_nik_unit]'
-                                                            class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Hapus </a>
-                                                         </div>
-                                                    </td>
+                                                    <a href='todoList.php?nim_nik_unit=$row[nim_nik_unit]&tanggal_absen=$row[tanggal_absen]'
+                                                            class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-list'></i> List </a></td>
                                                 </tr>";
                                             }
+
                                             ?>
-                                        </tbody>
+                                            </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <script>
                     $('#zero_config').DataTable();
                 </script>
@@ -282,7 +299,7 @@ if(!isset($_SESSION['login'])){
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
-            <!-- Tabel -->
+            <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->

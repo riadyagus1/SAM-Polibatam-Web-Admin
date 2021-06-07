@@ -227,7 +227,7 @@ if(!isset($_SESSION['login'])){
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Tabel Kehadiran</h4>
-                                <h6 class="card-subtitle">Tanggal: <code>1 Maret 2021 - 30 Maret 2021</code></h6>
+                                <h6 class="card-subtitle">Data yang ditampilakan hanya absen yang dilakukan melalui <code>Aplikasi SAM Polibatam</code></h6>
                                 <br>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
@@ -248,7 +248,7 @@ if(!isset($_SESSION['login'])){
                                         <tbody>
                                         <?php
                                             include 'koneksi.php';
-                                            $sql= mysqli_query($koneksi, "SELECT tbl_absen_header.tanggal_absen ,tbl_user.name , tbl_absen_masuk.jam_masuk ,tbl_absen_keluar.jam_keluar, tbl_user.alamat , tbl_absen_masuk.bukti_foto_masuk , tbl_absen_keluar.bukti_foto_keluar , tbl_absen_header.status FROM tbl_absen_header JOIN tbl_absen_masuk ON tbl_absen_header.id = tbl_absen_masuk.id_header JOIN tbl_absen_keluar ON tbl_absen_header.id = tbl_absen_keluar.id_header JOIN tbl_user ON tbl_absen_header.nim_nik_unit = tbl_user.nim_nik_unit");
+                                            $sql= mysqli_query($koneksi, "SELECT tbl_absen_header.tanggal_absen , tbl_user.nim_nik_unit, tbl_user.name , tbl_absen_masuk.jam_masuk ,tbl_absen_keluar.jam_keluar, tbl_user.alamat , tbl_absen_masuk.bukti_foto_masuk , tbl_absen_keluar.bukti_foto_keluar , tbl_absen_header.status FROM tbl_absen_header JOIN tbl_absen_masuk ON tbl_absen_header.id = tbl_absen_masuk.id_header JOIN tbl_absen_keluar ON tbl_absen_header.id = tbl_absen_keluar.id_header JOIN tbl_user ON tbl_absen_header.nim_nik_unit = tbl_user.nim_nik_unit");
                                             foreach($sql as $row){
                                                 $jam_masuk = date_create($row['jam_masuk']);
                                                 $jam_keluar = date_create($row['jam_keluar']);
@@ -264,7 +264,7 @@ if(!isset($_SESSION['login'])){
                                                     <td>" . $row['bukti_foto_keluar'] . "</td>
                                                     <td>" . $row['status'] . "</td>
                                                     <td>
-                                                    <a href='#'
+                                                    <a href='todoList.php?nim_nik_unit=$row[nim_nik_unit]&tanggal_absen=$row[tanggal_absen]'
                                                             class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-list'></i> List </a></td>
                                                 </tr>";
                                             }
