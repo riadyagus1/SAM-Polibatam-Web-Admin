@@ -144,8 +144,8 @@ $row            = mysqli_fetch_array($tbl_hari_libur);
                                     aria-hidden="true"></i><span class="hide-menu">Rekap Absen</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="ApprovalIzin.php" aria-expanded="false"><i class="me-3 fas fa-envelope"
-                                    aria-hidden="true"></i><span class="hide-menu">Approval Izin</span></a>
+                                href="ApprovalJMB.php" aria-expanded="false"><i class="me-3 f fas fa-clock"
+                                    aria-hidden="true"></i><span class="hide-menu">Approval JMB</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="LokasiWFH.php" aria-expanded="false"><i class="me-3 fas fa-map"

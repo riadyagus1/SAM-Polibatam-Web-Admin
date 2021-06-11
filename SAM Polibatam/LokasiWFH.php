@@ -147,8 +147,8 @@ if(!isset($_SESSION['login'])){
                                     aria-hidden="true"></i><span class="hide-menu">Rekap Absen</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="ApprovalIzin.php" aria-expanded="false"><i class="me-3 fas fa-envelope"
-                                    aria-hidden="true"></i><span class="hide-menu">Approval Izin</span></a>
+                                href="ApprovalJMB.php" aria-expanded="false"><i class="me-3 f fas fa-clock"
+                                    aria-hidden="true"></i><span class="hide-menu">Approval JMB</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="LokasiWFH.php" aria-expanded="false"><i class="me-3 fas fa-map"
@@ -595,7 +595,7 @@ if(!isset($_SESSION['login'])){
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>
-                                                <th class="border-top-0">NIM / NIK Unit</th>
+                                                <th class="border-top-0">NIM / NIK / Unit</th>
                                                 <th class="border-top-0">Nama</th>
  					        <th class="border-top-0">Alamat</th>
                                                 <th class="border-top-0">Latitude</th>

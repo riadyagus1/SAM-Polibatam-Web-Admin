@@ -138,8 +138,8 @@ if(!isset($_SESSION['login'])){
                                     aria-hidden="true"></i><span class="hide-menu">Rekap Absen</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="ApprovalIzin.php" aria-expanded="false"><i class="me-3 fas fa-envelope"
-                                    aria-hidden="true"></i><span class="hide-menu">Approval Izin</span></a>
+                                href="ApprovalJMB.php" aria-expanded="false"><i class="me-3 f fas fa-clock"
+                                    aria-hidden="true"></i><span class="hide-menu">Approval JMB</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="LokasiWFH.php" aria-expanded="false"><i class="me-3 fas fa-map"
@@ -184,12 +184,12 @@ if(!isset($_SESSION['login'])){
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Approval Izin</h3>
+                        <h3 class="page-title mb-0 p-0">Approval Jam Merdeka Mengajar</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Approval Izin</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Approval Jam Merdeka Mengajar</li>
                                 </ol>
                             </nav>
                         </div>
@@ -211,45 +211,44 @@ if(!isset($_SESSION['login'])){
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Tabel Pengajuan Izin</h4>
-                                <h6 class="card-subtitle">Data yang ditampilakan adalah data izin yang diajukan melalui
+                                <h4 class="card-title">Tabel Pengajuan Jam Merdeka Mengajar</h4>
+                                <h6 class="card-subtitle">Data yang ditampilakan adalah data yang diajukan melalui
                                     <code>Aplikasi SAM Polibatam</code></h6>
                                 <div class="table-responsive">
                                     <table class="table user-table no-wrap">
                                         <thead>
                                             <tr>
-                                                <th class="border-top-0">ID Header</th>
+                                                <th class="border-top-0">NIM / NIK / Unit</th>
                                                 <th class="border-top-0">Nama</th>
-                                                <th class="border-top-0">Tanggal</th>
-                                                <th class="border-top-0">Alasan</th>
+                                                <th class="border-top-0">Tanggal Pengajuan</th>
+                                                <th class="border-top-0">Jam Masuk</th>
+                                                <th class="border-top-0">Jam Pulang</th>
                                                 <th class="border-top-0">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             include 'koneksi.php';
-                                            $sql = mysqli_query($koneksi, "SELECT  
-                                            tbl_absen_header.id,
-                                            tbl_user.name ,
-                                            tbl_izin.waktu_izin, tbl_izin.alasan, tbl_izin.isAccepted 
-                                            FROM tbl_izin JOIN tbl_absen_header ON tbl_izin.id_header = tbl_absen_header.id 
-                                            JOIN
-                                            tbl_user ON tbl_absen_header.nim_nik_unit = tbl_user.nim_nik_unit ");
+                                            $sql = mysqli_query($koneksi, "
+                                                SELECT `tbl_pengajuan_jmb`.`id`, `tbl_pengajuan_jmb`.`nim_nik_unit`, `tbl_user`.`name`, `tbl_pengajuan_jmb`.`tanggal_pengajuan`, `tbl_pengajuan_jmb`.`jam_masuk`, `tbl_pengajuan_jmb`.`jam_pulang`, `tbl_pengajuan_jmb`.`isAccepted`
+                                                FROM `tbl_pengajuan_jmb` 
+                                                    LEFT JOIN `tbl_user` ON `tbl_pengajuan_jmb`.`nim_nik_unit` = `tbl_user`.`nim_nik_unit`;");
                                             foreach ($sql as $row) {
                                             if($row['isAccepted'] == '1'){
                                                 $status = "<span class='text-success'><i class='fas fa-check'></i> Pengajuan Disetujui</span>";
                                             }else{
                                                 $status = "
-                                                <a href='Action/TerimaIzin.php?id=".$row['id']."'
-                                                    class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a>
-                                                <a href='Action/TolakIzin.php?id=".$row['id']."' 
+                                                <a href='Action/TerimaJMB.php?id=$row[id]&nim_nik_unit=$row[nim_nik_unit]&jam_masuk=$row[jam_masuk]&jam_pulang=$row[jam_pulang]'
+                                                    class='btn btn-success d-none d-md-inline-block text-white'><i class='fas fa-check'></i> Terima</a> 
+                                                <a href='Action/TolakJMB.php?id=$row[id]'
                                                     class='btn btn-danger d-none d-md-inline-block text-white'><i class='fas fa-times'></i> Tolak </a>";
                                             }    
                                             echo "<tr>
-                                                    <td>" . $row['id'] . "</td>
+                                                    <td>" . $row['nim_nik_unit'] . "</td>
                                                     <td>" . $row['name'] . "</td>
-                                                    <td>" . $row['waktu_izin'] . "</td>
-                                                    <td>" . $row['alasan'] . "</td>
+                                                    <td>" . $row['tanggal_pengajuan'] . "</td>
+                                                    <td>" . $row['jam_masuk'] . "</td>
+                                                    <td>" . $row['jam_pulang'] . "</td>
                                                     <td> 
                                                     <div class='col-md-6 col-4 align-self-center'>
                                                     <div class='text-end upgrade-btn'>

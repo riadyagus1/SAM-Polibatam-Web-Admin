@@ -150,40 +150,39 @@ WHERE `tbl_absen_header`.`nim_nik_unit` = '$nim_nik_unit'");
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="DataKaryawan.php" aria-expanded="false">
-                                <i class="me-3 fas fa-users" aria-hidden="true"></i><span
-                                    class="hide-menu">Data Karyawan</span></a>
+                                <i class="me-3 fas fa-users" aria-hidden="true"></i><span class="hide-menu">Data
+                                    Karyawan</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="RekapAbsen.php" aria-expanded="false"><i class="me-3  fas fa-clipboard-check"
                                     aria-hidden="true"></i><span class="hide-menu">Rekap Absen</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="ApprovalIzin.php" aria-expanded="false"><i class="me-3 fas fa-envelope"
-                                    aria-hidden="true"></i><span class="hide-menu">Approval Izin</span></a>
+                                href="ApprovalJMB.php" aria-expanded="false"><i class="me-3 f fas fa-clock"
+                                    aria-hidden="true"></i><span class="hide-menu">Approval JMB</span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="LokasiWFH.php" aria-expanded="false"><i class="me-3 fas fa-map"
                                     aria-hidden="true"></i><span class="hide-menu">Lokasi WFH</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ApprovalLokasi.php" aria-expanded="false"><i class="me-3 fas fa-check-square"
                                     aria-hidden="true"></i><span class="hide-menu">Approval Lokasi WFH</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="PerubahanHariKerja.php" aria-expanded="false"><i class="me-3 fas fa-calendar-alt"
                                     aria-hidden="true"></i><span class="hide-menu">Perubahan Hari Kerja</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="ManajemenTokenAPI.php" aria-expanded="false"><i class="me-3 fas fa-fire"
                                     aria-hidden="true"></i><span class="hide-menu">Manajemen Token API</span></a>
-                                </li>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="Informasi.php" aria-expanded="false"><i class="me-3 fas fa-info-circle"
                                     aria-hidden="true"></i><span class="hide-menu">Informasi</span></a>
-                                </li>
+                        </li>
                         <li class="text-center p-20 upgrade-btn">
-                            <a href="Logout.php"
-                                class="btn btn-danger text-white mt-4">Log Out</a>
+                            <a href="Logout.php" class="btn btn-danger text-white mt-4">Log Out</a>
                         </li>
                     </ul>
 
