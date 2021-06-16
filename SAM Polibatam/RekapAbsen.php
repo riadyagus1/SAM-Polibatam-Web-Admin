@@ -21,13 +21,13 @@ if(!isset($_SESSION['login'])){
     <title>SAM Polibatam | Rekap Absen</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon100.png">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
     <!-- Datatables -->
-    <link rel="stylesheet" type="text/css" href="../assets/plugins/DataTables/Bootstrap-4-4.1.1/css/dataTables.bootstrap4.min.css">
-    <script src="../assets/plugins/DataTables-1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="../assets/plugins/DataTables/Bootstrap-4-4.1.1/js/dataTables.responsive.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/plugins/DataTables/Bootstrap-4-4.1.1/css/dataTables.bootstrap4.min.css">
+    <script src="assets/plugins/DataTables-1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/DataTables/Bootstrap-4-4.1.1/js/dataTables.responsive.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
      <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -71,14 +71,14 @@ if(!isset($_SESSION['login'])){
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets/images/logoIcon.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/LogoHD.png" height="35" alt="homepage" class="dark-logo" />
 
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="../assets/images/logoText.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/TextHD.png" width="128" alt="homepage" class="dark-logo" />
 
                         </span>
                     </a>
@@ -111,8 +111,10 @@ if(!isset($_SESSION['login'])){
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="assets/images/users/9.png" alt="user" class="profile-pic me-2">
+                                <span class="mr-2-d-non d-lg-inline text-white small"><?= $_SESSION['nama'];?></span>
                             </a>
                         </li>
                     </ul>
@@ -314,9 +316,9 @@ if(!isset($_SESSION['login'])){
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>

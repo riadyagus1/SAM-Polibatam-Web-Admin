@@ -25,9 +25,9 @@ if(!isset($_SESSION['login'])){
     <title>SAM Polibatam | Dashboard</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon100.png">
     <!-- Custom CSS -->
-    <link href="../assets/plugins/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="assets/plugins/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -67,14 +67,14 @@ if(!isset($_SESSION['login'])){
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets/images/logoIcon.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/LogoHD.png" height="35" alt="homepage" class="dark-logo" />
 
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="../assets/images/logoText.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/TextHD.png" width="128" alt="homepage" class="dark-logo" />
 
                         </span>
                     </a>
@@ -108,10 +108,9 @@ if(!isset($_SESSION['login'])){
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2">
+                                <img src="assets/images/users/9.png" alt="user" class="profile-pic me-2">
                                 <span class="mr-2-d-non d-lg-inline text-white small"><?= $_SESSION['nama'];?></span>
                             </a>
-                            <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
                 </div>
@@ -341,9 +340,9 @@ if(!isset($_SESSION['login'])){
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>
@@ -353,8 +352,8 @@ if(!isset($_SESSION['login'])){
     <script src="js/custom.js"></script>
     <!--This page JavaScript -->
     <!--flot chart-->
-    <script src="../assets/plugins/flot/jquery.flot.js"></script>
-    <script src="../assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="assets/plugins/flot/jquery.flot.js"></script>
+    <script src="assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="js/pages/dashboards/dashboard1.js"></script>
 </body>
 

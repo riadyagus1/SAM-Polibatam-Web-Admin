@@ -18,10 +18,10 @@ if(!isset($_SESSION['login'])){
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>SAM Polibatam | Approval Izin</title>
+    <title>SAM Polibatam | Approval JMB</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon100.png">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -61,14 +61,14 @@ if(!isset($_SESSION['login'])){
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets/images/logoIcon.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/LogoHD.png" height="35" alt="homepage" class="dark-logo" />
 
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="../assets/images/logoText.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/TextHD.png" width="128" alt="homepage" class="dark-logo" />
 
                         </span>
                     </a>
@@ -103,9 +103,9 @@ if(!isset($_SESSION['login'])){
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
+                                <img src="assets/images/users/9.png" alt="user" class="profile-pic me-2">
+                                <span class="mr-2-d-non d-lg-inline text-white small"><?= $_SESSION['nama'];?></span>
                             </a>
-                            <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
                 </div>
@@ -184,12 +184,12 @@ if(!isset($_SESSION['login'])){
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Approval Jam Merdeka Mengajar</h3>
+                        <h3 class="page-title mb-0 p-0">Approval Jam Merdeka Bekerja</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="Home.php">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Approval Jam Merdeka Mengajar</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Approval Jam Merdeka Bekerja</li>
                                 </ol>
                             </nav>
                         </div>
@@ -211,7 +211,7 @@ if(!isset($_SESSION['login'])){
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Tabel Pengajuan Jam Merdeka Mengajar</h4>
+                                <h4 class="card-title">Tabel Pengajuan Jam Merdeka Bekerja</h4>
                                 <h6 class="card-subtitle">Data yang ditampilakan adalah data yang diajukan melalui
                                     <code>Aplikasi SAM Polibatam</code></h6>
                                 <div class="table-responsive">
@@ -304,9 +304,9 @@ if(!isset($_SESSION['login'])){
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>

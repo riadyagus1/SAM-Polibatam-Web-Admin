@@ -28,7 +28,7 @@ $row            = mysqli_fetch_array($tbl_hari_libur);
     <title>SAM Polibatam | Edit Hari Libur</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon100.png">
+    <link rel="icon" type="image/png" href="assets/images/favicon100.png">
     <!-- Custom CSS -->
     <link href="css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -68,14 +68,14 @@ $row            = mysqli_fetch_array($tbl_hari_libur);
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets/images/logoIcon.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/LogoHD.png" height="35" alt="homepage" class="dark-logo" />
 
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="../assets/images/logoText.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/TextHD.png" width="128" alt="homepage" class="dark-logo" />
 
                         </span>
                     </a>
@@ -108,10 +108,11 @@ $row            = mysqli_fetch_array($tbl_hari_libur);
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/9.png" alt="user" class="profile-pic me-2"><?= $_SESSION['nama'];?>
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="assets/images/users/9.png" alt="user" class="profile-pic me-2">
+                                <span class="mr-2-d-non d-lg-inline text-white small"><?= $_SESSION['nama'];?></span>
                             </a>
-                            <ul class="dropdown-menu show" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
                 </div>
@@ -281,9 +282,9 @@ $row            = mysqli_fetch_array($tbl_hari_libur);
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="../assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app-style-switcher.js"></script>
     <!--Wave Effects -->
     <script src="js/waves.js"></script>
