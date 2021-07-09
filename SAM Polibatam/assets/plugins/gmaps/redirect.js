@@ -1,7 +1,7 @@
 function gotoClick(x,y) {
         var pos = { lat: x, lng: y };
 	var map = new google.maps.Map(document.getElementById("gmaps-simple"), {
-          zoom: 15,
+          zoom: 16.5,
           center: pos,
         });
 
@@ -14,7 +14,7 @@ function gotoClick(x,y) {
 function OnloadMap(x,y) {
         var pos = { lat: x, lng: y };
 	var map = new google.maps.Map(document.getElementById("gmaps-simple"), {
-          zoom: 15,
+          zoom: 16.5,
           center: pos,
         });
 

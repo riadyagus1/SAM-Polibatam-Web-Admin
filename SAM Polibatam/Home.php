@@ -9,7 +9,7 @@ if(!isset($_SESSION['login'])){
 <html dir="ltr" lang="en">
 
 <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="chart/setup.js"></script>
@@ -239,6 +239,7 @@ if(!isset($_SESSION['login'])){
 					$row2 = $result2->fetch_assoc()['allTotal'];
 
 					$percentage = ($row1 / $row2) * 100;
+					$perString = $percentage . '%';
 				    ?>
 
                                     <?php echo "<h2 class='font-light mb-0'>" .$row1. " Orang</h2>"; ?>
@@ -254,10 +255,10 @@ if(!isset($_SESSION['login'])){
 					document.getElementById("datetime").innerHTML = dayNames[day] + ", " + dd + " " + monthNames[mm] + " " + yy;
 				    </script>
                                 </div>
-                                <?php echo "<span class='text-success'>" .$percentage. "</span>"; ?>
+                                <?php echo "<span class='text-success'>" .$perString. "</span>"; ?>
                                 <div class="progress">
                                     <?php
-					echo '<div class="progress-bar bg-success" role="progressbar" style="width:"' .$percentage. '%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>';
+					echo "<div class='progress-bar bg-success' role='progressbar' style='width:$perString; height: 6px;' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'></div>";
 				    ?>
                                 </div>
                             </div>

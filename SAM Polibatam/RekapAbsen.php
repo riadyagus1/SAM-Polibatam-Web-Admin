@@ -250,7 +250,7 @@ if(!isset($_SESSION['login'])){
                                         <tbody>
                                         <?php
                                             include 'koneksi.php';
-                                            $sql= mysqli_query($koneksi, "SELECT tbl_absen_header.tanggal_absen , tbl_user.nim_nik_unit, tbl_user.name , tbl_absen_masuk.jam_masuk ,tbl_absen_keluar.jam_keluar, tbl_user.alamat , tbl_absen_masuk.bukti_foto_masuk , tbl_absen_keluar.bukti_foto_keluar , tbl_absen_header.status FROM tbl_absen_header JOIN tbl_absen_masuk ON tbl_absen_header.id = tbl_absen_masuk.id_header JOIN tbl_absen_keluar ON tbl_absen_header.id = tbl_absen_keluar.id_header JOIN tbl_user ON tbl_absen_header.nim_nik_unit = tbl_user.nim_nik_unit");
+                                            $sql= mysqli_query($koneksi, "SELECT tbl_absen_header.tanggal_absen , tbl_user.nim_nik_unit, tbl_user.name , tbl_absen_masuk.jam_masuk ,tbl_absen_keluar.jam_keluar, tbl_absen_keluar.lokasi_keluar , tbl_absen_masuk.bukti_foto_masuk , tbl_absen_keluar.bukti_foto_keluar , tbl_absen_header.status FROM tbl_absen_header JOIN tbl_absen_masuk ON tbl_absen_header.id = tbl_absen_masuk.id_header JOIN tbl_absen_keluar ON tbl_absen_header.id = tbl_absen_keluar.id_header JOIN tbl_user ON tbl_absen_header.nim_nik_unit = tbl_user.nim_nik_unit");
                                             foreach($sql as $row){
                                                 $jam_masuk = date_create($row['jam_masuk']);
                                                 $jam_keluar = date_create($row['jam_keluar']);
@@ -261,7 +261,7 @@ if(!isset($_SESSION['login'])){
                                                     <td>" . $row['jam_masuk'] . "</td>
                                                     <td>" . $row['jam_keluar'] . "</td>
                                                     <td>" . $lama_bekerja->h, ':'. $lama_bekerja->i, ':'. $lama_bekerja->s . ' Jam'."</td>
-                                                    <td>" . $row['alamat'] . "</td>
+                                                    <td>" . $row['lokasi_keluar'] . "</td>
                                                     <td>" . $row['bukti_foto_masuk'] . "</td>
                                                     <td>" . $row['bukti_foto_keluar'] . "</td>
                                                     <td>" . $row['status'] . "</td>

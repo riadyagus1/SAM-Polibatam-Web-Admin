@@ -52,7 +52,7 @@ footer a {
 /* Akhir Dashboard */
 /* Body */
 body {
-    background-image:url(../assets/images/Kampus-Polibatam1.jpg) ;
+    background-image:url(/assets/images/Kampus-Polibatam1.jpg) ;
     position: fixed;
     background-size: 100%;
     width: 100%;
@@ -62,7 +62,7 @@ body {
 /* Index */
 #background{
     margin-top:-120px;
-    background:url(../assets/images/Kampus-Polibatam1.jpg) no-repeat;
+    background:url(/assets/images/Kampus-Polibatam1.jpg) no-repeat;
     background-size:cover;
     padding-top:111px;
     height:100vh;

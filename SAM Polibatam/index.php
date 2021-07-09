@@ -52,7 +52,7 @@ if(isset($_SESSION['login'])){
 
 				<form class="login100-form validate-form" method="post" action="proses.php" >
 					<span class="login100-form-title">
-						Login SAM Polibatam
+						Login Admin SAM Polibatam
 					</span>
 					<?= $warning;?>
 					<div class="wrap-input100 validate-input" data-validate = "Masukkan username dengan benar">

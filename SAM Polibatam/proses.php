@@ -13,31 +13,21 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $result = json_decode(curl_exec($ch));
 $array = json_decode(json_encode($result), true);
 
-foreach ($array as $val){
-    $nama = $val['name'];
-}
-
-echo "<pre>";
-print_r($array);
-echo "</pre>";
-
-echo "Status    : ".$array['status'].'<br>';
-echo "Message   : ".$array['message'].'<br>';
-echo "Nama : ".$nama.'<br>';
-
 if($result->status == "success" && ($result->data->nim_nik_unit == "3311901002" || $result->data->nim_nik_unit == "3311901018" || $result->data->nim_nik_unit == "3311901049" || $result->data->nim_nik_unit == "117175" || $result->data->nim_nik_unit == "3312001012" || $result->data->nim_nik_unit == "219299" || $result->data->nim_nik_unit == "207044" || $result->data->nim_nik_unit == "209083")) {
-	// session_start();
-    //$_SESSION['username'] = $username; 
-    $_SESSION['nama'] = $nama;
-    $_SESSION['login'] = true;
-    // $_SESSION['nim_nik_unit'] = $nim_nik_unit;
-	// $_SESSION['jabatan'] = $jabatan;
-    header('Location: Home.php');
+	foreach ($array as $val){
+    		$nama = $val['name'];
+	}
+
+    	$_SESSION['nama'] = $nama;
+    	$_SESSION['login'] = true;
+
+    	header('Location: Home.php');
 }
+
+
 else {
     $_SESSION['message'] = $array['message'];
     $_SESSION['status'] = $array['status'];
-    //echo "<script> alert('password salah');</script>";
     header('Location: index.php');
-    } 
+    }
 ?>

@@ -17,25 +17,25 @@ if($idApprove == '0'){
         $res1 = $koneksi->query("UPDATE tbl_user SET jam_masuk='$jam_masuk', jam_pulang='$jam_pulang' WHERE nim_nik_unit='$nim_nik_unit';");
         if ($res1 === TRUE) {
            header('Refresh:0.1; url=../ApprovalJMB.php');
-           echo '<script>alert("Jam Merdeka Bekerja Sudah Disetujui")</script>';
+           echo '<script>alert("Jam Merdeka Mengajar Sudah Disetujui")</script>';
         }
 
         else {
            header('Refresh:0.1; url=../ApprovalJMB.php');
-           echo '<script>alert("Jam Merdeka Bekerja Gagal Untuk Disetujui")</script>';
+           echo '<script>alert("Jam Merdeka Mengajar Gagal Untuk Disetujui")</script>';
         }
     }
 
     else {
     header('Refresh:0.1; url=../ApprovalJMB.php');
-    echo '<script>alert("Jam Merdeka Bekerja Gagal Untuk Disetujui")</script>';
+    echo '<script>alert("Jam Merdeka Mengajar Gagal Untuk Disetujui")</script>';
     }
 
 }
 
 else{
     header('Refresh:0.1; url=../ApprovalJMB.php');
-    echo '<script>alert("Jam Merdeka Bekerja Sudah Disetujui Sebelumnya")</script>';
+    echo '<script>alert("Jam Merdeka Mengajar Sudah Disetujui Sebelumnya")</script>';
 }
 
 ?>

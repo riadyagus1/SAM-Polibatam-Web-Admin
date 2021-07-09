@@ -666,7 +666,7 @@ if(!isset($_SESSION['login'])){
     <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
     <!-- google maps api -->
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyCNJqakPdB3zozQKYUc-IFOMnokYiSRNH8"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCNJqakPdB3zozQKYUc-IFOMnokYiSRNH8"></script>
     <script src="assets/plugins/gmaps/gmaps.min.js"></script>
     <script src="assets/plugins/gmaps/jquery.gmaps.js"></script>
     <!--Custom JavaScript -->
