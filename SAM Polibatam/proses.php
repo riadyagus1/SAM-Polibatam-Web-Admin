@@ -4,7 +4,7 @@ error_reporting(E_ALL ^ E_WARNING);
 $data = array(
     "username"      => $_POST['username'],
     "password"      => $_POST['password'],
-    "token"         => "imsLKICAxlFhEOkbxeO8bbQu2LE44zVf"
+    "token"         => "<REDACTED>"
 );
 $ch = curl_init('http://sid.polibatam.ac.id/apilogin/web/api/auth/login');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
